@@ -1,14 +1,14 @@
 {
-  "name": "modabiz",
+  "name": "anafisio",
   "version": "1.0.0",
-  "title": "ModaBiz",
-  "homepage": "http://www.modabiz.com.br/",
-  "description": "Plataforma para montagem de aplicações wordpress sob camada",
+  "title": "anafisio",
+  "homepage": "http://www.anafisio.com/",
+  "description": "",
   "author": "joaotdn@gmail.com",
   "tags": "",
   "repository": {
     "type": "git",
-    "url": "https://joaotdn@bitbucket.org/joaotdn/modabiz.git"
+    "url": "https://github.com/plandd/anafisio.git"
   },
   "devDependencies": {
     "csswring": "^3.0.5",
@@ -21,7 +21,7 @@
     "grunt-contrib-watch": "^0.6.1",
     "grunt-ftp-deploy": "^0.1.3",
     "grunt-spritesmith": "^1.24.0",
-    "grunt-uncss": "^0.4.2",
+    "grunt-uncss": "*",
     "jshint-stylish": "~0.1.5"
   }
 }

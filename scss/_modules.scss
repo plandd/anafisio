@@ -1,0 +1,94 @@
+/**
+ * ------------------------------------------------------------------
+ * Placeholders
+ * ------------------------------------------------------------------
+ */
+%full-height {
+	height: 100%;
+}
+%transition {
+	@include transition(all .3s linear);
+}
+
+/**
+ * ------------------------------------------------------------------
+ * Seletores
+ * ------------------------------------------------------------------
+ */
+figure {
+	margin: 0;
+}
+a {
+	@extend %transition;
+}
+
+/**
+ * ------------------------------------------------------------------
+ * Tipografia
+ * ------------------------------------------------------------------
+ */
+
+//Familias
+.font-lite {
+	font-family: 'Museo100-Regular';
+}
+.font-regular {
+	font-family: 'Museo300-Regular';
+}
+.font-bold {
+	font-family: 'Museo500-Regular';
+}
+.font-black {
+	font-family: 'Museo700-Regular';
+}
+.font-strong {
+	font-family: 'Museo900-Regular';
+}
+
+//cores
+.primary {
+	color: $primary-color;
+}
+.ghost {
+	color: $ghost;
+}
+
+/**
+ * ------------------------------------------------------------------
+ * Backgrounds
+ * ------------------------------------------------------------------
+ */
+.bg-primary {
+	background-color: $primary-color;
+}
+.bg-ghost {
+	background-color: $ghost;
+}
+
+/**
+ * ------------------------------------------------------------------
+ * Comportamentos
+ * ------------------------------------------------------------------
+ */
+.d-block {
+	display: block;
+}
+.d-table {
+	display: table;
+}
+.d-table-cell {
+	display: table-cell;
+	vertical-align: middle;
+}
+.full-height {
+	@extend %full-height;
+}
+
+/**
+ * ------------------------------------------------------------------
+ * Margens
+ * ------------------------------------------------------------------
+ */
+.no-margin {
+	margin: 0 !important;
+}

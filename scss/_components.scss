@@ -1,0 +1,30 @@
+/**
+ * ------------------------------------------------------------------
+ * Cabeçalho
+ * ------------------------------------------------------------------
+ */
+%header-blocks {
+	height: rem-calc(110);
+}
+.af-logo {
+	@extend %header-blocks;
+	h1 {
+		@extend .d-table-cell;
+	}
+}
+#main-menu {
+	a {
+		@extend .d-table;
+		@extend .font-bold;
+		@extend .ghost;
+		@extend %header-blocks;
+		border-bottom: 3px solid transparent;
+		&:hover {
+			@extend .primary;
+			border-color: $primary-color;
+		}
+	}
+	span {
+		@extend .d-table-cell;
+	}
+}
