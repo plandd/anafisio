@@ -1,0 +1,39 @@
+@media #{$small-only} {
+  .row {
+    width: rem-calc(320);
+    max-width: none;
+  }
+  //slider home
+  #home-slider  {
+    height: rem-calc(260);
+    .row {
+      height: rem-calc(260);
+    }
+  }
+  .home-slider-nav {
+    display: none;
+  }
+}
+@media #{$medium-only} {
+  .row {
+    width: rem-calc(768);
+    max-width: none;
+  }
+
+  //slider home
+  #home-slider {
+    height: rem-calc(400);
+    .row {
+      height: rem-calc(400);
+    }
+  }
+  .home-slider-nav {
+    display: none;
+  }
+}
+@media #{$large-up} {
+  //slider home
+  .slide-title {
+    font-size: rem-calc(72);
+  }
+}

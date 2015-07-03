@@ -9,6 +9,9 @@
 %transition {
 	@include transition(all .3s linear);
 }
+%radius {
+		border-radius: $global-radius;
+}
 
 /**
  * ------------------------------------------------------------------
@@ -49,8 +52,25 @@ a {
 .primary {
 	color: $primary-color;
 }
+.secondary {
+	color: $secondary-color;
+}
+.info {
+	color: $info-color;
+}
+.white {
+	color: $white;
+}
 .ghost {
 	color: $ghost;
+}
+
+//caixa
+.text-up {
+	text-transform: uppercase;
+}
+.text-low {
+	text-transform: lowercase;
 }
 
 /**
@@ -61,8 +81,19 @@ a {
 .bg-primary {
 	background-color: $primary-color;
 }
+.bg-secondary {
+	background-color: $secondary-color;
+}
+.bg-info {
+	background-color: $info-color;
+}
 .bg-ghost {
 	background-color: $ghost;
+}
+.bg-cover {
+	background-size: cover;
+	background-repeat: no-repeat;
+	background-position: 0 50%;
 }
 
 /**
@@ -73,12 +104,21 @@ a {
 .d-block {
 	display: block;
 }
+.d-iblock {
+	display: inline-block;
+}
 .d-table {
 	display: table;
 }
 .d-table-cell {
 	display: table-cell;
 	vertical-align: middle;
+}
+.rel {
+	position: relative;
+}
+.abs {
+	position: absolute;
 }
 .full-height {
 	@extend %full-height;
@@ -91,4 +131,12 @@ a {
  */
 .no-margin {
 	margin: 0 !important;
+}
+.divide-20 {
+	@extend .small-12;
+	@extend .left;
+	margin-bottom: rem-calc(20);
+}
+.pd-left-20 {
+	padding-left: rem-calc(20);
 }

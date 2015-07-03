@@ -3,16 +3,149 @@
  * Cabeçalho
  * ------------------------------------------------------------------
  */
+
+// altura do cabeçalho
+$header_height : rem-calc(110);
 %header-blocks {
-	height: rem-calc(110);
+	height: $header_height;
 }
+
+//logo
 .af-logo {
 	@extend %header-blocks;
 	h1 {
 		@extend .d-table-cell;
 	}
 }
+
+//ligamos para você
+#call-form {
+	z-index: 9999;
+	@extend %radius;
+	input {
+		@extend %radius;
+	}
+}
+.off-call-us {
+	padding: rem-calc(30);
+	header {
+		padding: 0 !important;
+	}
+	h6 {
+		font-size: rem-calc(14);
+		@extend .font-regular;
+		@extend .white;
+	}
+	input {
+		@extend %radius;
+	}
+}
+
+/**
+ * ------------------------------------------------------------------
+ * Navegação
+ * ------------------------------------------------------------------
+ */
+
+//Menu off-canvas
+#off-canvas {
+	width: rem-calc(294);
+  right: 0;
+  position: fixed;
+  z-index: 99999;
+	visibility: hidden;
+	opacity: 0;
+	@include translateX(100%);
+	@extend %transition;
+
+	&.show {
+		visibility: visible;
+		opacity: 1;
+		@include translateX(0);
+	}
+
+	header {
+		padding: rem-calc(30);
+	}
+	.icon-close2 {
+		line-height: 1.4;
+		&:hover,&:focus {
+			@extend .info;
+		}
+	}
+	ul {
+		@extend .no-bullet;
+	}
+	li {
+		@extend .small-12;
+		@extend .left;
+		@extend .no-margin;
+		a {
+			@extend .d-block;
+			@extend .small-12;
+			@extend .left;
+			@extend .white;
+			@extend .font-bold;
+			padding: rem-calc(10 30);
+			border-bottom: 1px solid shade($secondary-color, 10%);
+			&:hover {
+				background-color: shade($secondary-color, 10%);
+			}
+		}
+		span {
+			@extend .left;
+		}
+	}
+	.icon-triangle-down {
+		@extend .right;
+		line-height: 1.5;
+	}
+	.submenu {
+		display: none;
+		a {
+			border: none;
+			@extend .font-regular;
+		}
+	}
+}
+.close-off-menu, .close-call-us {
+	@extend .small-12;
+	@extend %full-height;
+	display: block;
+	position: fixed;
+	background-color: rgba(#000,.7);
+	z-index: 999;
+	display: none;
+	&.show {
+		display: block;
+	}
+}
+
+//Menu principal do topo (desktop)
 #main-menu {
+	ul {
+		overflow: visible;
+	}
+	li {
+		@extend .rel;
+		&:first-child {
+			margin-left: 0;
+		}
+		&:hover {
+			.submenu {
+				//display: block;
+				//@include translateY(0);
+				visibility: visible;
+				opacity: 1;
+			}
+		}
+		&:hover, &.current-menu-item {
+			> a {
+				@extend .primary;
+				border-color: $primary-color;
+			}
+		}
+	}
 	a {
 		@extend .d-table;
 		@extend .font-bold;
@@ -27,4 +160,133 @@
 	span {
 		@extend .d-table-cell;
 	}
+	//Submenu
+	.submenu {
+		@extend .no-bullet;
+		@extend .abs;
+		@extend .d-block;
+		@extend .bg-secondary;
+		@extend %transition;
+		//display: none;
+		width: rem-calc(220);
+		left: 0;
+		top: $header_height;
+		-webkit-box-shadow: 2px 2px 3px 0px rgba(50, 50, 50, 0.64);
+		-moz-box-shadow:    2px 2px 3px 0px rgba(50, 50, 50, 0.64);
+		box-shadow:         2px 2px 3px 0px rgba(50, 50, 50, 0.64);
+		//@include translateY(-100%);
+		visibility: hidden;
+		opacity: 0;
+		z-index: 99;
+
+		a {
+			height: auto;
+			@extend .small-12;
+			@extend .white;
+			border: none;
+			padding: rem-calc(0 20);
+			height: rem-calc(40);
+
+			&:hover {
+				@extend .white;
+				@extend .bg-primary;
+				padding-left: rem-calc(30);
+			}
+		}
+	}
+
+	.icon-triangle-down:before {
+		text-align: right;
+		font-size: rem-calc(12);
+		display: inline-block;
+		margin-left: rem-calc(5);
+	}
+}
+
+.icon-triangle-down {
+	&.rotate {
+		@include rotate(-180deg);
+	}
+}
+
+//menu mobile
+.toggle-menu {
+	font-size: rem-calc(36);
+	margin-left: rem-calc(20);
+	line-height: 0;
+	@extend .ghost;
+	span {
+		@extend .d-iblock;
+		margin-top: rem-calc(4);
+	}
+}
+#mo-menu {
+	.d-table {
+		@extend %header-blocks;
+	}
+	.icon-phone {
+		margin-right: rem-calc(10);
+	}
+	.button {
+		padding: rem-calc(12 20);
+	}
+}
+
+/**
+ * ------------------------------------------------------------------
+ * Home - Slider
+ * ------------------------------------------------------------------
+ */
+%slider-height {
+	height: rem-calc(500);
+}
+#home-slider {
+	@extend %slider-height;
+	z-index: 9;
+	.row {
+		@extend %slider-height;
+		@extend .rel;
+		z-index: 9;
+	}
+}
+.home-slider-nav {
+	@extend .abs;
+	@extend .d-table;
+	top: 0;
+	@extend %slider-height;
+	width: rem-calc(60);
+
+	&.prev-slide {
+		left: 0;
+		padding-left: rem-calc(20);
+	}
+	&.next-slide {
+		right: 0;
+		padding-right: rem-calc(20);
+	}
+	&:hover {
+		opacity: .8;
+		@extend .info;
+		i:before {
+			border-color: $info-color;
+		}
+	}
+
+	i {
+		@extend .d-table-cell;
+		@extend .text-center;
+		&:before {
+			@extend %transition;
+			width: 100%;
+		  height: rem-calc(40);
+		  display: block;
+		  border: 2px solid $white;
+		  border-radius: 100%;
+		  line-height: 2.2;
+		}
+	}
+}
+.slider-mask {
+	background-color: rgba($secondary-color,.6);
+	z-index: 0;
 }
