@@ -13,6 +13,15 @@
   .home-slider-nav {
     display: none;
   }
+  //serviços
+  .service-card {
+    a {
+      height: rem-calc(200);
+      figcaption {
+        height: 100%;
+      }
+    }
+  }
 }
 @media #{$medium-only} {
   .row {
@@ -30,10 +39,27 @@
   .home-slider-nav {
     display: none;
   }
+
+  //serviços
+  .service-card {
+    a {
+      height: rem-calc(250);
+      figcaption {
+        height: 100%;
+      }
+    }
+
+  }
 }
 @media #{$large-up} {
   //slider home
   .slide-title {
     font-size: rem-calc(72);
+  }
+  #count-user {
+    .button {
+      margin-top: rem-calc(20);
+  		font-size: rem-calc(24);
+  	}
   }
 }

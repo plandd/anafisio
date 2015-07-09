@@ -18,6 +18,13 @@
  * Seletores
  * ------------------------------------------------------------------
  */
+body {
+	//necessario para o menu fixo
+	padding-top: rem-calc(110);
+	&.fixed {
+		position: fixed;
+	}
+}
 figure {
 	margin: 0;
 }
@@ -73,6 +80,11 @@ a {
 	text-transform: lowercase;
 }
 
+//Alturas de linhas
+.lh-small {
+	line-height: 1.2;
+}
+
 /**
  * ------------------------------------------------------------------
  * Backgrounds
@@ -89,6 +101,9 @@ a {
 }
 .bg-ghost {
 	background-color: $ghost;
+}
+.bg-white {
+	background-color: $white;
 }
 .bg-cover {
 	background-size: cover;

@@ -1,5 +1,6 @@
 <!doctype html>
 <html class="no-js" lang="pt-br">
+  <!-- Developed by PlanDD (contato@plandd.cc) -->
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -22,7 +23,7 @@
 
     <!-- cabeçalho -->
     <header id="header" class="small-12 left" role="banner">
-      <div class="row">
+      <div class="row rel">
         <!-- logo -->
         <figure class="af-logo small-8 medium-4 columns d-table" role="img">
           <h1><a href="#" class="d-block" title="Página principal"><img src="images/logo.png" alt="Anafisio"></a></h1>
@@ -54,12 +55,12 @@
             <li><a href="#"><span>Contato</span></a></li>
           </ul>
         </nav>
-        <!-- menu mobile / fixo -->
+        <!-- menu mobile -->
         <nav id="mo-menu" class="small-4 medium-8 columns right hide-for-large-up">
           <div class="d-table small-12 left">
             <div class="d-table-cell small-12">
               <h3 class="right">
-                <a href="#" title="Abrir o menu" class="toggle-menu"><span class="icon-menu"></span></a>
+                <a href="#" title="Abrir o menu" class="toggle-menu"><span class="icon-icon_menu"></span></a>
               </h3>
               <h3 class="call-us right show-for-medium-up">
                 <a href="#" data-dropdown="call-form" aria-controls="call-form" aria-expanded="false" class="button info round no-margin font-bold" title="Ligamos para você">
@@ -99,14 +100,35 @@
 
     <!-- Slider -->
     <section id="home-slider" class="small-12 left bg-ghost rel">
-      <div class="slider-mask small-12 full-height abs"></div>
-      <nav class="slider-items small-12 left full-height">
+
+      <nav class="slider-items small-12 left full-height cycle-slideshow"
+      data-cycle-fx="fade"
+      data-cycle-timeout="8000"
+      data-cycle-slides="> figure"
+      data-cycle-prev=".next-slide"
+      data-cycle-next=".prev-slide"
+      data-cycle-pager=".slider-pager"
+      data-cycle-pager-template="<span></span>"
+      data-cycle-swipe="true"
+      data-cycle-swipe-fx="scrollHorz"
+      >
         <figure class="small-12 full-height" data-thumb="http://truselfsportingclub.com/wp-content/uploads/2014/10/Pilates-Mat.jpeg">
+          <div class="slider-mask small-12 full-height abs"></div>
           <div class="row d-table">
-            <div class="small-12 d-table-cell text-center">
+            <article class="small-12 d-table-cell text-center">
               <h2 class="white slide-title">Mais qualidade de vida</h2>
               <h4 class="white font-regular">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Doloribus voluptas, at eveniet tempora! Quae aspernatur eum esse a maiores.</h4>
-            </div>
+            </article>
+          </div>
+        </figure>
+
+        <figure class="small-12 full-height" data-thumb="http://www.domofisio.com/wp-content/uploads/2012/09/11213649_ml.jpg">
+          <div class="slider-mask small-12 full-height abs"></div>
+          <div class="row d-table">
+            <article class="small-12 d-table-cell text-center">
+              <h2 class="white slide-title">Mais qualidade de vida</h2>
+              <h4 class="white font-regular">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Doloribus voluptas, at eveniet tempora! Quae aspernatur eum esse a maiores.</h4>
+            </article>
           </div>
         </figure>
       </nav>
@@ -118,8 +140,230 @@
         <i class="icon-chevron-thin-right"></i>
       </a>
       <!-- paginação -->
+      <nav class="slider-bullets abs small-12 text-center">
+        <div class="slider-pager"></div>
+      </nav>
     </section>
     <!-- // Slider -->
+
+    <!-- barra ligamos para voce -->
+    <section class="call-us-bar bg-primary small-12 left show-for-large-up">
+      <div class="d-table small-12 left">
+        <div class="small-12 d-table-cell">
+          <div class="row">
+            <header class="small-5 columns">
+              <h6 class="white no-margin">Deixe seu nome e telefone que ligamos para você</h6>
+              <h6 class="info no-margin">Se preferir, ligue para a gente 11-5631-0206</h6>
+            </header>
+            <form action="" class="small-7 columns form-bar">
+              <input type="text" class="left" placeholder="Nome">
+              <input type="text" class="left" placeholder="Telefone">
+              <input type="submit" value="OK" class="right button info no-margin">
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Serviços -->
+    <section id="services" class="row">
+      <header class="small-12 columns text-center">
+        <h2 class="primary no-margin">Tratamentos específicos para a sua necessidade.</h2>
+        <h4 class="ghost font-regular">Grupos de tratamentos pensados especialmente para você.</h4>
+      </header>
+
+      <nav class="nav-services small-12 left">
+        <figure class="small-12 medium-6 large-3 columns service-card rel">
+          <a href="#" class="d-block rel small-12 left" title="">
+            <div class="small-12 abs" data-thumb="media/card1.jpg"></div>
+            <figcaption class="small-12 left rel">
+              <hgroup class="small-12 d-table-cell text-center white">
+                <h1 class="no-margin"><span class="icon-icon_hearth"></span></h1>
+                <h3 class="no-margin font-regular lh-small">Fisioterapia Articulacional</h3>
+              </hgroup>
+            </figcaption>
+          </a>
+        </figure>
+
+        <figure class="small-12 medium-6 large-3 columns service-card rel">
+          <a href="#" class="d-block rel small-12 left" title="">
+            <div class="small-12 abs" data-thumb="media/card2.jpg"></div>
+            <figcaption class="small-12 left rel">
+              <hgroup class="small-12 d-table-cell text-center white">
+                <h1 class="no-margin"><span class="icon-icon_baby"></span></h1>
+                <h3 class="no-margin font-regular lh-small">Fisioterapia para grávidas</h3>
+              </hgroup>
+            </figcaption>
+          </a>
+        </figure>
+
+        <figure class="small-12 medium-6 large-3 columns service-card rel">
+          <a href="#" class="d-block rel small-12 left" title="">
+            <div class="small-12 abs" data-thumb="media/card3.jpg"></div>
+            <figcaption class="small-12 left rel">
+              <hgroup class="small-12 d-table-cell text-center white">
+                <h1 class="no-margin"><span class="icon-icon_horse"></span></h1>
+                <h3 class="no-margin font-regular lh-small">Fisioterapia Infantil</h3>
+              </hgroup>
+            </figcaption>
+          </a>
+        </figure>
+
+        <figure class="small-12 medium-6 large-3 columns service-card rel">
+          <a href="#" class="d-block rel small-12 left" title="">
+            <div class="small-12 abs" data-thumb="media/card4.jpg"></div>
+            <figcaption class="small-12 left rel">
+              <hgroup class="small-12 d-table-cell text-center white">
+                <h1 class="no-margin"><span class="icon-icon_gear"></span></h1>
+                <h3 class="no-margin font-regular lh-small">Fisioterapia Motora</h3>
+              </hgroup>
+            </figcaption>
+          </a>
+        </figure>
+      </nav>
+    </section>
+
+    <!-- contadores -->
+    <section id="count-user" class="row">
+      <header class="small-12 medium-8 medium-offset-2 columns text-center">
+        <h3 class="primary no-margin">Mais de 1.500 pessoas satisfeitas com a saúde</h3>
+      </header>
+
+      <div class="counter-list small-12 columns">
+        <hgroup class="small-15 medium-3 columns text-center">
+          <h1 class="info no-margin lh-small">1.606</h1>
+          <h5 class="no-margin font-regular ghost">Atendimentos</h5>
+        </hgroup>
+
+        <hgroup class="small-15 medium-3 columns text-center">
+          <h1 class="info no-margin lh-small">204</h1>
+          <h5 class="no-margin font-regular ghost">Andam novamente</h5>
+        </hgroup>
+
+        <hgroup class="small-15 medium-3 columns text-center">
+          <h1 class="info no-margin lh-small">608</h1>
+          <h5 class="no-margin font-regular ghost">Recuperaram a força</h5>
+        </hgroup>
+
+        <hgroup class="small-15 medium-3 columns text-center">
+          <h1 class="info no-margin lh-small">12</h1>
+          <h5 class="no-margin font-regular ghost">Tratamentos</h5>
+        </hgroup>
+      </div>
+
+      <article class="small-12 columns text-center">
+        <h3 class="font-regular primary divide-20">Nossa felicidade é levar saúde para você e toda a sua família. Faça um de nossos tratamentos e sinta sua vida mudar para melhor.</h3>
+        <h1><a href="#" class="button round">ver todos os tratamentos</a></h1>
+      </article>
+    </section>
+
+    <!-- estrutura -->
+    <section id="structure" class="small-12 left rel" data-thumb="http://www.trenofitness.com/site/images/academia.jpg">
+      <div class="info-mask abs small-12"></div>
+      <div class="row">
+        <header class="small-12 columns text-center">
+          <h2 class="white font-regular">Conheça nossa estrutura</h2>
+        </header>
+
+        <nav class="nav-pics small-12 columns">
+          <figure class="small-3 left rel">
+            <div class="small-12 abs" data-thumb="http://4.bp.blogspot.com/-tLFcOXgKxJQ/UktG7zsp83I/AAAAAAAARbs/zNpEohrbDvI/s1600/DSC07621.JPG"></div>
+            <a href="#" class="d-block small-12 abs">
+              <div class="abs small-12 text-center">
+                <span class="icon-icon_picture"></span>
+              </div>
+              <figcaption class="small-12 abs">
+                <h5 class="primary font-regular">Sala de massagem</h5>
+              </figcaption>
+            </a>
+          </figure>
+
+          <figure class="small-3 left rel">
+            <div class="small-12 abs" data-thumb="http://academialocatelli.com.br/img/pilates2.jpg"></div>
+            <a href="#" class="d-block small-12 abs">
+              <div class="abs small-12 text-center">
+                <span class="icon-icon_picture"></span>
+              </div>
+              <figcaption class="small-12 abs">
+                <h5 class="primary font-regular">Sala de massagem</h5>
+              </figcaption>
+            </a>
+          </figure>
+
+          <figure class="small-3 left rel">
+            <div class="small-12 abs" data-thumb="http://2.bp.blogspot.com/-Bd5VSVuqqlQ/UM71tmfCjBI/AAAAAAAAGKw/LVktqMOx0Io/s1600/CAM00378.jpg"></div>
+            <a href="#" class="d-block small-12 abs">
+              <div class="abs small-12 text-center">
+                <span class="icon-icon_picture"></span>
+              </div>
+              <figcaption class="small-12 abs">
+                <h5 class="primary font-regular">Sala de massagem</h5>
+              </figcaption>
+            </a>
+          </figure>
+
+          <figure class="small-3 left rel">
+            <div class="small-12 abs" data-thumb="https://gympass.s3.amazonaws.com/image/filename/101989/IMG-20150603-WA0017.jpg"></div>
+            <a href="#" class="d-block small-12 abs">
+              <div class="abs small-12 text-center">
+                <span class="icon-icon_picture"></span>
+              </div>
+              <figcaption class="small-12 abs">
+                <h5 class="primary font-regular">Sala de massagem</h5>
+              </figcaption>
+            </a>
+          </figure>
+
+          <figure class="small-3 left rel">
+            <div class="small-12 abs" data-thumb="http://www.omb100.com/produtos/2154_destaque1GFwStH.jpg"></div>
+            <a href="#" class="d-block small-12 abs">
+              <div class="abs small-12 text-center">
+                <span class="icon-icon_picture"></span>
+              </div>
+              <figcaption class="small-12 abs">
+                <h5 class="primary font-regular">Sala de massagem</h5>
+              </figcaption>
+            </a>
+          </figure>
+
+          <figure class="small-3 left rel">
+            <div class="small-12 abs" data-thumb="http://www.guiapinzon.com.br/imagens_clientes/imagens/clientes_img3_51353_max.jpg"></div>
+            <a href="#" class="d-block small-12 abs">
+              <div class="abs small-12 text-center">
+                <span class="icon-icon_picture"></span>
+              </div>
+              <figcaption class="small-12 abs">
+                <h5 class="primary font-regular">Sala de massagem</h5>
+              </figcaption>
+            </a>
+          </figure>
+
+          <figure class="small-3 left rel">
+            <div class="small-12 abs" data-thumb="http://www.jundiaionline.com.br/guia/fotos/3_2242014176743.jpg"></div>
+            <a href="#" class="d-block small-12 abs">
+              <div class="abs small-12 text-center">
+                <span class="icon-icon_picture"></span>
+              </div>
+              <figcaption class="small-12 abs">
+                <h5 class="primary font-regular">Sala de massagem</h5>
+              </figcaption>
+            </a>
+          </figure>
+
+          <figure class="small-3 left rel">
+            <div class="small-12 abs" data-thumb="http://www.jundiaionline.com.br/guia/fotos/2_2242014176742.jpg"></div>
+            <a href="#" class="d-block small-12 abs">
+              <div class="abs small-12 text-center">
+                <span class="icon-icon_picture"></span>
+              </div>
+              <figcaption class="small-12 abs">
+                <h5 class="primary font-regular">Sala de massagem</h5>
+              </figcaption>
+            </a>
+          </figure>
+        </nav>
+      </div>
+    </section>
 
     <script src="bower_components/jquery/dist/jquery.min.js"></script>
     <script src="scripts.js"></script>
