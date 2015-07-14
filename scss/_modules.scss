@@ -28,7 +28,7 @@ body {
 figure {
 	margin: 0;
 }
-a {
+a:not(.service-link) {
 	@extend %transition;
 }
 
@@ -53,6 +53,14 @@ a {
 }
 .font-strong {
 	font-family: 'Museo900-Regular';
+}
+
+//tamanho
+.text-small {
+	font-size: rem-calc(12);
+}
+.text-normal {
+	font-size: rem-calc(14);
 }
 
 //cores
@@ -147,6 +155,11 @@ a {
 .no-margin {
 	margin: 0 !important;
 }
+.divide-10 {
+	@extend .small-12;
+	@extend .left;
+	margin-bottom: rem-calc(10);
+}
 .divide-20 {
 	@extend .small-12;
 	@extend .left;
@@ -154,4 +167,18 @@ a {
 }
 .pd-left-20 {
 	padding-left: rem-calc(20);
+}
+
+/**
+ * ------------------------------------------------------------------
+ * Colunas
+ * ------------------------------------------------------------------
+ */
+.two-columns {
+	-moz-column-count:2;
+	-webkit-column-count:2;
+	column-count:2;
+	-moz-column-gap:10px;
+	-webkit-column-gap:10px;
+	column-gap:10px;
 }

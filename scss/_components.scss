@@ -4,6 +4,14 @@
  * ------------------------------------------------------------------
  */
 
+//carregamento
+#jpreBar {
+	height: rem-calc(5);
+	position: fixed;
+	top: 0;
+	left: 0;
+}
+
 // altura do cabeçalho
 $header_height : rem-calc(110);
 %header-blocks {
@@ -23,6 +31,9 @@ $header_height : rem-calc(110);
 	@extend %header-blocks;
 	h1 {
 		@extend .d-table-cell;
+	}
+	img {
+		@extend .small-12;
 	}
 }
 
@@ -84,9 +95,10 @@ $header_height : rem-calc(110);
 	}
 	ul {
 		@extend .no-bullet;
+		@extend .small-12;
 	}
 	li {
-		@extend .small-12;
+		width: 100%;
 		@extend .left;
 		@extend .no-margin;
 		a {
@@ -263,6 +275,15 @@ $header_height : rem-calc(110);
 		@extend .rel;
 		z-index: 9;
 	}
+	> nav {
+		@extend %transition;
+		visibility: hidden;
+		opacity: 0;
+		&.show {
+			visibility: visible;
+			opacity: 1;
+		}
+	}
 	article {
 		@extend %transition;
 		@include translateY(rem-calc(90));
@@ -366,9 +387,11 @@ $header_height : rem-calc(110);
 
 /**
  * ------------------------------------------------------------------
- * Sessão de serviços
+ * Sessões
  * ------------------------------------------------------------------
  */
+
+//Serviços
 #services,#count-user {
 	header {
 		margin: rem-calc(40 0);
@@ -376,7 +399,9 @@ $header_height : rem-calc(110);
 }
 .service-card {
 	margin-bottom: rem-calc(20);
-
+	figure {
+		border-radius: $global-radius;
+	}
 	a {
 		height: rem-calc(380);
 		border-radius: $global-radius;
@@ -386,14 +411,15 @@ $header_height : rem-calc(110);
 		}
 		div {
 			@extend %full-height;
-			@extend %transition;
+		  @include transition(transform .3s linear);
+			border-radius: $global-radius;
 			top: 0;
 			left: 0;
 			z-index: 0;
 		}
 		figcaption {
-			@extend %transition;
 			@extend .d-table;
+			border-radius: $global-radius $global-radius 0 0;
 			height: rem-calc(180);
 			//background-color: #1b408f;
 			background-image: -webkit-linear-gradient(321deg, rgba(#0d2a7d,.8) 0%, rgba(#10b2ee,.8) 100%);
@@ -401,14 +427,12 @@ $header_height : rem-calc(110);
 			background-image: linear-gradient(51deg, rgba(#0d2a7d,.8) 0%, rgba(#10b2ee,.8) 100%);
 			z-index: 9;
 		}
-
 		&:hover {
 			div {
 				// -webkit-filter: blur(2px);
     		// filter: blur(2px);
 				@include scale(1.05);
 			}
-
 		}
 	}
 }
@@ -502,5 +526,72 @@ $header_height : rem-calc(110);
 		@extend .bg-white;
 		@include translateY(100%);
 		opacity: 0;
+	}
+}
+
+//Mapa
+#map-section {
+	height: rem-calc(355);
+	@extend .bg-primary;
+}
+
+/**
+ * ------------------------------------------------------------------
+ * Rodapé
+ * ------------------------------------------------------------------
+ */
+#footer {
+	i {
+		font-size: rem-calc(22);
+	}
+	p > span {
+		@extend .rel;
+		bottom: rem-calc(5);
+	}
+	article:nth-child(1n) {
+		@extend .rel;
+		top: rem-calc(-20);
+		padding-left: rem-calc(62);
+	}
+	a {
+		@extend .white;
+	}
+	a:hover {
+		@extend .info;
+	}
+	li:first-child {
+		margin-left: 0;
+	}
+	input[type="submit"] {
+		height: rem-calc(37);
+		padding: rem-calc(0 34.5);
+	}
+	> .row {
+		padding: rem-calc(40 0);
+		border-bottom: 1px solid shade($primary-color,15%);
+	}
+}
+.logo-footer {
+	font-size: rem-calc(60);
+	&:hover {
+		@extend .info;
+	}
+}
+.custom-menu {
+	@extend .show-for-large-up;
+	// a:hover {
+	// 	padding-left: rem-calc(10);
+	// }
+	&:nth-child(1n+1) {
+		li {
+			width: 50%;
+			margin-left: 0;
+		}
+	}
+}
+#credits {
+	> .row {
+		padding: rem-calc(20 0);
+		border-top: 1px solid tint($primary-color,10%);
 	}
 }

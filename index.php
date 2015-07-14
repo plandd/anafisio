@@ -1,150 +1,9 @@
-<!doctype html>
-<html class="no-js" lang="pt-br">
-  <!-- Developed by PlanDD (contato@plandd.cc) -->
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Anafisio</title>
-    <link rel="stylesheet" href="style.css" />
-    <script src="bower_components/modernizr/modernizr.js"></script>
-  </head>
-  <body>
-    <!-- menu off-canvas -->
-    <nav id="off-canvas" class="fixed full-height bg-secondary" role="navigation">
-      <header class="small-12 left bg-primary">
-        <h3 class="text-up info font-bold left">Menu</h3>
-        <h3 class="right"><a href="#" title="Fechar o menu" class="icon-close2 white"></a></h3>
-      </header>
-      <div class="off-nav small-12 left"></div>
-      <div class="off-call-us small-12 left"></div>
-    </nav>
-    <a href="#" class="close-off-menu"></a> <!-- fechar menu -->
-    <a href="#" class="close-call-us"></a> <!-- fechar form telefone -->
+<?php get_header(); ?>
 
-    <!-- cabeçalho -->
-    <header id="header" class="small-12 left" role="banner">
-      <div class="row rel">
-        <!-- logo -->
-        <figure class="af-logo small-8 medium-4 columns d-table" role="img">
-          <h1><a href="#" class="d-block" title="Página principal"><img src="images/logo.png" alt="Anafisio"></a></h1>
-        </figure>
-        <!-- menu principal -->
-        <nav id="main-menu" class="small-8 columns show-for-large-up" role="navigation">
-          <ul class="inline-list no-margin right">
-            <li class="current-menu-item"><a href="#"><span>Início</span></a></li>
-            <li><a href="#"><span>Sobre nós</span></a></li>
-            <li>
-              <a href="#"><span>Tratamentos</span></a>
-              <ul class="submenu">
-                <li><a href="#"><span>Pilates</span></a></li>
-                <li><a href="#"><span>Massagem</span></a></li>
-                <li><a href="#"><span>RPG</span></a></li>
-                <li><a href="#"><span>Shantala</span></a></li>
-                <li><a href="#"><span>Disfunção da ATM</span></a></li>
-                <li><a href="#"><span>Apuncultura</span></a></li>
-                <li><a href="#"><span>Obesidade</span></a></li>
-                <li><a href="#"><span>Neurológica</span></a></li>
-                <li><a href="#"><span>Respiratória</span></a></li>
-                <li><a href="#"><span>Cardiológica</span></a></li>
-                <li><a href="#"><span>Ortopédica</span></a></li>
-                <li><a href="#"><span>Saúde da mulher</span></a></li>
-              </ul>
-            </li>
-            <li><a href="#"><span>Home care</span></a></li>
-            <li><a href="#"><span>Trabalhe conosco</span></a></li>
-            <li><a href="#"><span>Contato</span></a></li>
-          </ul>
-        </nav>
-        <!-- menu mobile -->
-        <nav id="mo-menu" class="small-4 medium-8 columns right hide-for-large-up">
-          <div class="d-table small-12 left">
-            <div class="d-table-cell small-12">
-              <h3 class="right">
-                <a href="#" title="Abrir o menu" class="toggle-menu"><span class="icon-icon_menu"></span></a>
-              </h3>
-              <h3 class="call-us right show-for-medium-up">
-                <a href="#" data-dropdown="call-form" aria-controls="call-form" aria-expanded="false" class="button info round no-margin font-bold" title="Ligamos para você">
-                  <figure class="icon-phone left"></figure>
-                  <span>Ligamos para você</span>
-                </a>
-              </h3>
-            </div>
-          </div>
-        </nav>
-        <!-- ligamos para você -->
-        <div id="call-form" data-dropdown-content class="f-dropdown small content radius" aria-hidden="true" tabindex="-1">
-          <form id="call-us-form" action="" data-abide>
-            <header class="divide-20">
-              <h6 class="ghost">Deixe seu nome e telefone que ligaremos para você!</h6>
-            </header>
-            <p>
-              <label><input type="text" name="nome" placeholder="Seu nome" pattern="alpha_numeric" required></label>
-              <small class="error">Apenas letras</small>
-            </p>
-            <p class="small-2 left no-margin">
-              <input type="text" name="dd" placeholder="DD" maxlength="2" pattern="number">
-              <small class="error">Apenas números</small>
-            </p>
-            <p class="small-10 left pd-left-20 no-margin">
-              <input type="text" name="telefone" placeholder="Seu telefone" maxlength="2" pattern="number">
-              <small class="error">Apenas números</small>
-            </p>
-            <p>
-              <input type="submit" class="button info small-12 left no-margin" value="Ligue para mim">
-            </p>
-          </form>
-        </div>
-      </div>
-    </header>
-    <!-- // cabeçalho -->
-
-    <!-- Slider -->
-    <section id="home-slider" class="small-12 left bg-ghost rel">
-
-      <nav class="slider-items small-12 left full-height cycle-slideshow"
-      data-cycle-fx="fade"
-      data-cycle-timeout="8000"
-      data-cycle-slides="> figure"
-      data-cycle-prev=".next-slide"
-      data-cycle-next=".prev-slide"
-      data-cycle-pager=".slider-pager"
-      data-cycle-pager-template="<span></span>"
-      data-cycle-swipe="true"
-      data-cycle-swipe-fx="scrollHorz"
-      >
-        <figure class="small-12 full-height" data-thumb="http://truselfsportingclub.com/wp-content/uploads/2014/10/Pilates-Mat.jpeg">
-          <div class="slider-mask small-12 full-height abs"></div>
-          <div class="row d-table">
-            <article class="small-12 d-table-cell text-center">
-              <h2 class="white slide-title">Mais qualidade de vida</h2>
-              <h4 class="white font-regular">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Doloribus voluptas, at eveniet tempora! Quae aspernatur eum esse a maiores.</h4>
-            </article>
-          </div>
-        </figure>
-
-        <figure class="small-12 full-height" data-thumb="http://www.domofisio.com/wp-content/uploads/2012/09/11213649_ml.jpg">
-          <div class="slider-mask small-12 full-height abs"></div>
-          <div class="row d-table">
-            <article class="small-12 d-table-cell text-center">
-              <h2 class="white slide-title">Mais qualidade de vida</h2>
-              <h4 class="white font-regular">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Doloribus voluptas, at eveniet tempora! Quae aspernatur eum esse a maiores.</h4>
-            </article>
-          </div>
-        </figure>
-      </nav>
-      <!-- navegar -->
-      <a href="#" title="Slide anterior" class="home-slider-nav prev-slide white">
-        <i class="icon-chevron-thin-left"></i>
-      </a>
-      <a href="#" title="Slide anterior" class="home-slider-nav next-slide white">
-        <i class="icon-chevron-thin-right"></i>
-      </a>
-      <!-- paginação -->
-      <nav class="slider-bullets abs small-12 text-center">
-        <div class="slider-pager"></div>
-      </nav>
-    </section>
-    <!-- // Slider -->
+    <?php
+        //Slider principal
+        require get_template_directory()."/includes/sections/home_slider.php";
+    ?>
 
     <!-- barra ligamos para voce -->
     <section class="call-us-bar bg-primary small-12 left show-for-large-up">
@@ -174,7 +33,7 @@
 
       <nav class="nav-services small-12 left">
         <figure class="small-12 medium-6 large-3 columns service-card rel">
-          <a href="#" class="d-block rel small-12 left" title="">
+          <a href="#" class="service-link d-block rel small-12 left" title="">
             <div class="small-12 abs" data-thumb="media/card1.jpg"></div>
             <figcaption class="small-12 left rel">
               <hgroup class="small-12 d-table-cell text-center white">
@@ -186,7 +45,7 @@
         </figure>
 
         <figure class="small-12 medium-6 large-3 columns service-card rel">
-          <a href="#" class="d-block rel small-12 left" title="">
+          <a href="#" class="service-link d-block rel small-12 left" title="">
             <div class="small-12 abs" data-thumb="media/card2.jpg"></div>
             <figcaption class="small-12 left rel">
               <hgroup class="small-12 d-table-cell text-center white">
@@ -198,7 +57,7 @@
         </figure>
 
         <figure class="small-12 medium-6 large-3 columns service-card rel">
-          <a href="#" class="d-block rel small-12 left" title="">
+          <a href="#" class="service-link d-block rel small-12 left" title="">
             <div class="small-12 abs" data-thumb="media/card3.jpg"></div>
             <figcaption class="small-12 left rel">
               <hgroup class="small-12 d-table-cell text-center white">
@@ -210,7 +69,7 @@
         </figure>
 
         <figure class="small-12 medium-6 large-3 columns service-card rel">
-          <a href="#" class="d-block rel small-12 left" title="">
+          <a href="#" class="service-link d-block rel small-12 left" title="">
             <div class="small-12 abs" data-thumb="media/card4.jpg"></div>
             <figcaption class="small-12 left rel">
               <hgroup class="small-12 d-table-cell text-center white">
@@ -231,22 +90,22 @@
 
       <div class="counter-list small-12 columns">
         <hgroup class="small-15 medium-3 columns text-center">
-          <h1 class="info no-margin lh-small">1.606</h1>
+          <h1 class="info no-margin lh-small timer" data-to="3968" data-speed="2000"></h1>
           <h5 class="no-margin font-regular ghost">Atendimentos</h5>
         </hgroup>
 
         <hgroup class="small-15 medium-3 columns text-center">
-          <h1 class="info no-margin lh-small">204</h1>
+          <h1 class="info no-margin lh-small timer" data-to="204" data-speed="2000"></h1>
           <h5 class="no-margin font-regular ghost">Andam novamente</h5>
         </hgroup>
 
         <hgroup class="small-15 medium-3 columns text-center">
-          <h1 class="info no-margin lh-small">608</h1>
+          <h1 class="info no-margin lh-small timer" data-to="608" data-speed="2000"></h1>
           <h5 class="no-margin font-regular ghost">Recuperaram a força</h5>
         </hgroup>
 
         <hgroup class="small-15 medium-3 columns text-center">
-          <h1 class="info no-margin lh-small">12</h1>
+          <h1 class="info no-margin lh-small timer" data-to="12" data-speed="2000"></h1>
           <h5 class="no-margin font-regular ghost">Tratamentos</h5>
         </hgroup>
       </div>
@@ -266,9 +125,9 @@
         </header>
 
         <nav class="nav-pics small-12 columns">
-          <figure class="small-3 left rel">
+          <figure class="small-6 medium-3 left rel">
             <div class="small-12 abs" data-thumb="http://4.bp.blogspot.com/-tLFcOXgKxJQ/UktG7zsp83I/AAAAAAAARbs/zNpEohrbDvI/s1600/DSC07621.JPG"></div>
-            <a href="#" class="d-block small-12 abs">
+            <a href="http://4.bp.blogspot.com/-tLFcOXgKxJQ/UktG7zsp83I/AAAAAAAARbs/zNpEohrbDvI/s1600/DSC07621.JPG" class="d-block small-12 abs" data-lightbox="estrutura" data-title="Sala de massagem">
               <div class="abs small-12 text-center">
                 <span class="icon-icon_picture"></span>
               </div>
@@ -278,9 +137,9 @@
             </a>
           </figure>
 
-          <figure class="small-3 left rel">
+          <figure class="small-6 medium-3 left rel">
             <div class="small-12 abs" data-thumb="http://academialocatelli.com.br/img/pilates2.jpg"></div>
-            <a href="#" class="d-block small-12 abs">
+            <a href="http://academialocatelli.com.br/img/pilates2.jpg" class="d-block small-12 abs" data-lightbox="estrutura" data-title="Sala de massagem">
               <div class="abs small-12 text-center">
                 <span class="icon-icon_picture"></span>
               </div>
@@ -290,9 +149,9 @@
             </a>
           </figure>
 
-          <figure class="small-3 left rel">
+          <figure class="small-6 medium-3 left rel">
             <div class="small-12 abs" data-thumb="http://2.bp.blogspot.com/-Bd5VSVuqqlQ/UM71tmfCjBI/AAAAAAAAGKw/LVktqMOx0Io/s1600/CAM00378.jpg"></div>
-            <a href="#" class="d-block small-12 abs">
+            <a href="http://2.bp.blogspot.com/-Bd5VSVuqqlQ/UM71tmfCjBI/AAAAAAAAGKw/LVktqMOx0Io/s1600/CAM00378.jpg" class="d-block small-12 abs" data-lightbox="estrutura" data-title="Sala de massagem">
               <div class="abs small-12 text-center">
                 <span class="icon-icon_picture"></span>
               </div>
@@ -302,9 +161,9 @@
             </a>
           </figure>
 
-          <figure class="small-3 left rel">
+          <figure class="small-6 medium-3 left rel">
             <div class="small-12 abs" data-thumb="https://gympass.s3.amazonaws.com/image/filename/101989/IMG-20150603-WA0017.jpg"></div>
-            <a href="#" class="d-block small-12 abs">
+            <a href="https://gympass.s3.amazonaws.com/image/filename/101989/IMG-20150603-WA0017.jpg" class="d-block small-12 abs" data-lightbox="estrutura" data-title="Sala de massagem">
               <div class="abs small-12 text-center">
                 <span class="icon-icon_picture"></span>
               </div>
@@ -314,9 +173,9 @@
             </a>
           </figure>
 
-          <figure class="small-3 left rel">
+          <figure class="small-6 medium-3 left rel">
             <div class="small-12 abs" data-thumb="http://www.omb100.com/produtos/2154_destaque1GFwStH.jpg"></div>
-            <a href="#" class="d-block small-12 abs">
+            <a href="http://www.omb100.com/produtos/2154_destaque1GFwStH.jpg" class="d-block small-12 abs" data-lightbox="estrutura" data-title="Sala de massagem">
               <div class="abs small-12 text-center">
                 <span class="icon-icon_picture"></span>
               </div>
@@ -326,9 +185,9 @@
             </a>
           </figure>
 
-          <figure class="small-3 left rel">
+          <figure class="small-6 medium-3 left rel">
             <div class="small-12 abs" data-thumb="http://www.guiapinzon.com.br/imagens_clientes/imagens/clientes_img3_51353_max.jpg"></div>
-            <a href="#" class="d-block small-12 abs">
+            <a href="http://www.guiapinzon.com.br/imagens_clientes/imagens/clientes_img3_51353_max.jpg" class="d-block small-12 abs" data-lightbox="estrutura" data-title="Sala de massagem">
               <div class="abs small-12 text-center">
                 <span class="icon-icon_picture"></span>
               </div>
@@ -338,9 +197,9 @@
             </a>
           </figure>
 
-          <figure class="small-3 left rel">
+          <figure class="small-6 medium-3 left rel">
             <div class="small-12 abs" data-thumb="http://www.jundiaionline.com.br/guia/fotos/3_2242014176743.jpg"></div>
-            <a href="#" class="d-block small-12 abs">
+            <a href="http://www.jundiaionline.com.br/guia/fotos/3_2242014176743.jpg" class="d-block small-12 abs" data-lightbox="estrutura" data-title="Sala de massagem">
               <div class="abs small-12 text-center">
                 <span class="icon-icon_picture"></span>
               </div>
@@ -350,9 +209,9 @@
             </a>
           </figure>
 
-          <figure class="small-3 left rel">
+          <figure class="small-6 medium-3 left rel">
             <div class="small-12 abs" data-thumb="http://www.jundiaionline.com.br/guia/fotos/2_2242014176742.jpg"></div>
-            <a href="#" class="d-block small-12 abs">
+            <a href="http://www.jundiaionline.com.br/guia/fotos/2_2242014176742.jpg" class="d-block small-12 abs" data-lightbox="estrutura" data-title="Sala de massagem">
               <div class="abs small-12 text-center">
                 <span class="icon-icon_picture"></span>
               </div>
@@ -365,7 +224,8 @@
       </div>
     </section>
 
-    <script src="bower_components/jquery/dist/jquery.min.js"></script>
-    <script src="scripts.js"></script>
-  </body>
-</html>
+    <!-- mapa -->
+    <section id="map-section" class="small-12 left" data-lat="-23.6720075" data-lng="-46.677789" data-brandicon="">
+    </section>
+
+<?php get_footer(); ?>

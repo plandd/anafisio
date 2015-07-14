@@ -22,6 +22,12 @@
       }
     }
   }
+  //estrutura
+  .nav-pics {
+  	figure {
+  		height: rem-calc(130);
+    }
+  }
 }
 @media #{$medium-only} {
   .row {
@@ -48,7 +54,13 @@
         height: 100%;
       }
     }
+  }
 
+  //estrutura
+  .nav-pics {
+  	figure {
+  		height: rem-calc(150);
+    }
   }
 }
 @media #{$large-up} {
