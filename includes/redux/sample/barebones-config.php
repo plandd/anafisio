@@ -28,7 +28,7 @@
         // TYPICAL -> Change these values as you need/desire
         'opt_name'             => $opt_name,
         // This is where your data is stored in the database and also becomes your global variable name.
-        'display_name'         => $theme->get( 'Name' ),
+        'display_name'         => 'Anafisio',
         // Name that appears at the top of your panel
         'display_version'      => THEME_VERSION,
         // Version that appears at the top of your panel
@@ -36,8 +36,8 @@
         //Specify if the admin menu should appear or not. Options: menu or submenu (Under appearance only)
         'allow_sub_menu'       => true,
         // Show the sections below the admin menu item or not
-        'menu_title'           => __( 'PlanDD', 'redux-framework-demo' ),
-        'page_title'           => __( 'PlanDD', 'redux-framework-demo' ),
+        'menu_title'           => __( 'Anafisio', 'redux-framework-demo' ),
+        'page_title'           => __( 'Anafisio', 'redux-framework-demo' ),
         // You will need to generate a Google API key to use this feature.
         // Please visit: https://developers.google.com/fonts/docs/developer_api#Auth
         'google_api_key'       => '',
@@ -265,7 +265,7 @@
           array(
               'id'       => 'inst-email',
               'type'     => 'text',
-              'title'    => __( 'Rua/Av.', 'redux-framework-demo' ),
+              'title'    => __( 'E-mail primário', 'redux-framework-demo' ),
               'subtitle' => __( 'Obrigatório', 'redux-framework-demo' ),
               'desc'     => __( '', 'redux-framework-demo' ),
               'default'  => 'anafisio@anafisio.com',
@@ -314,7 +314,7 @@
                 'title'    => __( 'Latitude', 'redux-framework-demo' ),
                 'subtitle' => __( 'Obrigatório', 'redux-framework-demo' ),
                 'desc'     => __( 'Latitude inicial para configurar o mapa', 'redux-framework-demo' ),
-                'default'  => '',
+                'default'  => '-23.6720075',
             ),
 
             array(
@@ -323,7 +323,7 @@
                 'title'    => __( 'Longitude', 'redux-framework-demo' ),
                 'subtitle' => __( 'Obrigatório', 'redux-framework-demo' ),
                 'desc'     => __( 'Longitude inicial para configurar o mapa', 'redux-framework-demo' ),
-                'default'  => '',
+                'default'  => '-46.677789',
             ),
             array(
                 'id'       => 'gmap-placeicon',
@@ -331,15 +331,82 @@
                 'url'      => true,
                 'title'    => __( 'Marcador para as localizações', 'redux-framework-demo' ),
                 'compiler' => 'true',
-                //'mode'      => false, // Can be set to false to allow any media type, or can also be set to any mime type.
                 'desc'     => __( 'Ícone que irá marcar os locais cadastrados', 'redux-framework-demo' ),
                 'subtitle' => __( 'Envie icones pequenos, semelhanes ao do Google Maps', 'redux-framework-demo' ),
-                'default'  => '',
-                //'hint'      => array(
-                //    'title'     => 'Hint Title',
-                //    'content'   => 'This is a <b>hint</b> for the media field with a Title.',
-                //)
+                'default'  => get_template_directory() . '/images/local.png'
             )
+        )
+    ) );
+    
+    /**
+     * Números
+     */
+    Redux::setSection( $opt_name, array(
+        'title'     => __( 'Números', 'redux-framework-demo' ),
+        'id'        => 'numbers',
+        'desc'      => __( 'Links das redes sociais da empresa para todo o site', 'redux-framework-demo' ),
+        'icon'      => 'el el-graph',
+        'fields'    => array(
+          array(
+              'id'       => 'numbers-intro',
+              'type'     => 'text',
+              'title'    => __( 'Introdução', 'redux-framework-demo' ),
+              'subtitle' => __( '', 'redux-framework-demo' ),
+              'desc'     => __( 'Chamada acima dos números', 'redux-framework-demo' ),
+              'default'  => 'Mais de 1.500 pessoas satisfeitas com a saúde',
+          ),
+          array(
+              'id'       => 'numbers-sortable',
+              'type'     => 'sortable',
+              'title'    => __( 'Definir contadores', 'redux-framework-demo' ),
+              'subtitle' => __( 'Contam de 0 ao número escolhido', 'redux-framework-demo' ),
+              'desc'     => __( 'Separe o número da descrição por vígulas (29, Clientes)' ),
+              'label'    => true,
+              'options'  => array(
+                  'Coluna A' => '3968, Atendimentos',
+                  'Coluna B' => '204, Andam novamente',
+                  'Coluna C' => '608, Recuperaram a força',
+              ),
+              'default'  => array(
+                  'Coluna A' => '3968, Atendimentos',
+                  'Coluna B' => '204, Andam novamente',
+                  'Coluna C' => '608, Recuperaram a força',
+              )
+          ),
+          array(
+              'id'       => 'number-desc',
+              'type'     => 'textarea',
+              'title'    => __( 'Descrição para os tratamentos', 'redux-framework-demo' ),
+              'subtitle' => __( 'Logo abaixo dos contadores', 'redux-framework-demo' ),
+              'desc'     => __( '', 'redux-framework-demo' ),
+              'default'  => 'Nossa felicidade é levar saúde para você e toda a sua família. Faça um de nossos tratamentos e sinta sua vida mudar para melhor.',
+          )
+        )
+    ) );
+
+    /**
+     * Estrutura
+     */
+    Redux::setSection( $opt_name, array(
+        'title'      => __( 'Estrutura', 'redux-framework-demo' ),
+        'id'         => 'estrutura',
+        'desc'       => 'Acrescente as imagens e descrição da estrutura',
+        'icon'      => 'el el-picture',
+        'fields'     => array(
+          array(
+               'id'       => 'est-galeria',
+              'type'        => 'slides',
+              'title'    => __( 'Galeria', 'redux-framework-demo' ),
+              'subtitle' => __( 'Fotos da estrutura', 'redux-framework-demo' ),
+              'desc'        => '',
+              'placeholder' => array(
+                  'title'       => __( 'Título', 'redux-framework-demo' ),
+                  'description' => __( 'Deixar em branco', 'redux-framework-demo' ),
+                  'url'         => __( 'Deixar em branco', 'redux-framework-demo' ),
+                  'width' => '242',
+                  'height' => '220'
+              ),
+          )
         )
     ) );
 

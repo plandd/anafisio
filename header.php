@@ -3,7 +3,7 @@
   <!-- Developed by PlanDD (contato@plandd.cc) -->
   <head>
     <meta charset="<?php bloginfo( 'charset' ); ?>" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no" />
     <title><?php bloginfo('name'); ?> | <?php is_home()?bloginfo('description'):wp_title(''); ?></title>
     <link rel="shortcut icon" href="<?php echo get_template_directory_uri();?>/favicon.ico" type="image/vnd.microsoft.icon"/>
     <link rel="icon" href="<?php echo get_template_directory_uri();?>/favicon.ico" type="image/x-ico"/>
@@ -24,7 +24,7 @@
     <nav id="off-canvas" class="fixed full-height bg-secondary" role="navigation">
       <header class="small-12 left bg-primary">
         <h3 class="text-up info font-bold left">Menu</h3>
-        <h3 class="right"><a href="#" title="Fechar o menu" class="icon-close2 white"></a></h3>
+        <h3 class="right"><a href="#" title="Fechar o menu" class="icon-icon_exit white"></a></h3>
       </header>
       <div class="off-nav small-12 left"></div>
       <div class="off-call-us small-12 left"></div>
@@ -36,11 +36,11 @@
     <header id="header" class="small-12 left" role="banner">
       <div class="row rel">
         <!-- logo -->
-        <figure class="af-logo small-8 medium-4 columns d-table" role="img">
+        <figure class="af-logo small-8 medium-4 large-3 columns d-table" role="img">
           <h1><a href="<?php echo home_url();?>" class="d-block" title="Página principal"><img src="<?php echo get_template_directory_uri();?>/images/logo.png" alt="Anafisio"></a></h1>
         </figure>
         <!-- menu principal -->
-        <nav id="main-menu" class="small-8 columns show-for-large-up" role="navigation">
+        <nav id="main-menu" class="small-8 columns right show-for-large-up" role="navigation">
           <ul class="inline-list no-margin right">
             <?php
               $defaults = array(

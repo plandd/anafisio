@@ -87,7 +87,7 @@ $header_height : rem-calc(110);
 	header {
 		padding: rem-calc(30);
 	}
-	.icon-close2 {
+	.icon-icon_exit {
 		line-height: 1.2;
 		&:hover,&:focus {
 			@extend .info;
@@ -117,7 +117,7 @@ $header_height : rem-calc(110);
 			@extend .left;
 		}
 	}
-	.icon-triangle-down {
+	.icon-icon_arrow-down-menu {
 		@extend .right;
 		line-height: 1.5;
 	}
@@ -222,7 +222,7 @@ $header_height : rem-calc(110);
 		}
 	}
 
-	.icon-triangle-down:before {
+	.icon-icon_arrow-down-menu:before {
 		text-align: right;
 		font-size: rem-calc(12);
 		display: inline-block;
@@ -230,7 +230,7 @@ $header_height : rem-calc(110);
 	}
 }
 
-.icon-triangle-down {
+.icon-icon_arrow-down-menu {
 	&.rotate {
 		@include rotate(-180deg);
 	}
@@ -294,6 +294,15 @@ $header_height : rem-calc(110);
 		}
 	}
 }
+.slider-items {
+	a {
+		@extend .abs;
+		left: 0; top: 0;
+		@extend %full-height;
+		@extend .small-12;
+		z-index: 99;
+	}
+}
 .home-slider-nav {
 	@extend .abs;
 	@extend .d-table;
@@ -306,12 +315,10 @@ $header_height : rem-calc(110);
 	}
 
 	&.prev-slide {
-		left: 0;
-		padding-left: rem-calc(20);
+		left: rem-calc(20);
 	}
 	&.next-slide {
-		right: 0;
-		padding-right: rem-calc(20);
+		right: rem-calc(20);
 	}
 	&:hover {
 		opacity: .8;
@@ -326,12 +333,7 @@ $header_height : rem-calc(110);
 		@extend .text-center;
 		&:before {
 			@extend %transition;
-			width: 100%;
-		  height: rem-calc(40);
-		  display: block;
-		  border: 2px solid $white;
-		  border-radius: 100%;
-		  line-height: 2.2;
+			font-size: rem-calc(42);
 		}
 	}
 
@@ -379,7 +381,7 @@ $header_height : rem-calc(110);
 			margin-right: rem-calc(10);
 		}
 	}
-	input[type="submit"] {
+	button {
 		height: rem-calc(37);
 		padding: rem-calc(0 34.5);
 	}
@@ -411,7 +413,7 @@ $header_height : rem-calc(110);
 		}
 		div {
 			@extend %full-height;
-		  @include transition(transform .3s linear);
+		  	@include transition(transform .3s linear);
 			border-radius: $global-radius;
 			top: 0;
 			left: 0;
@@ -537,6 +539,38 @@ $header_height : rem-calc(110);
 
 /**
  * ------------------------------------------------------------------
+ * Páginas internas
+ * ------------------------------------------------------------------
+ */
+
+//Categoria, Arquivo
+#category-intro {
+	height: rem-calc(260);
+	@extend .d-table;
+	header {
+		border-bottom: 1px solid $white;
+		margin-bottom: rem-calc(20);
+		h3 {
+			margin-bottom: rem-calc(15);
+		}
+	}
+}
+.mask-primary {
+	background-color: rgba($primary-color,.9);
+	@extend %full-height;
+	top: 0; left: 0;
+}
+
+//lista de posts
+#nav-posts {
+	padding: rem-calc(40 0);
+}
+.post-card {
+	border-top: 1px dashed $ghost;
+}
+
+/**
+ * ------------------------------------------------------------------
  * Rodapé
  * ------------------------------------------------------------------
  */
@@ -570,6 +604,9 @@ $header_height : rem-calc(110);
 		padding: rem-calc(40 0);
 		border-bottom: 1px solid shade($primary-color,15%);
 	}
+	.submenu {
+		@extend .no-bullet;
+	}
 }
 .logo-footer {
 	font-size: rem-calc(60);
@@ -593,5 +630,8 @@ $header_height : rem-calc(110);
 	> .row {
 		padding: rem-calc(20 0);
 		border-top: 1px solid tint($primary-color,10%);
+	}
+	a:hover, a:focus {
+		@extend .info;
 	}
 }

@@ -14,6 +14,7 @@ define('THEME_VERSION', '1.0.1');
 //Icone do tema
 define('THEME_ICON', get_stylesheet_directory_uri() . '/images/icon.png');
 
+
 /**
 * Configure funções para campos personalizados da aplicação
 */
@@ -52,21 +53,39 @@ include_once( get_stylesheet_directory() . '/includes/acf-repeater/acf-repeater.
 //define( 'ACF_LITE' , true );
 //include_once( get_stylesheet_directory() . '/inc/acf/preconfig.php' );
 
-
 /**
  * Esta função será chamada logo após a inicialização da aplicação
  *
  * @since ModaBiz 1.0
  */
 function plandd_setup() {
+
+	/**
+	 * Registrar formatos de miniaturas
+	 */
+	add_theme_support('post-thumbnails');
+    
+    set_post_thumbnail_size( 242, 220, true );
+
+    if (function_exists('add_image_size')) {
+        add_image_size('estrutura', 242, 220, true);
+    }
+
 	/**
 	 * Registre os menus do topo e rodapé
 	 */
 	register_nav_menus( array(
 		'primary' => __( 'Menu principal',   'plandd' ),
-    'secondary'  => __( 'Menu institucional', 'plandd' ),
+    	'secondary'  => __( 'Menu institucional', 'plandd' ),
 		'terciary'  => __( 'Menu tratamentos', 'plandd' ),
 	) );
+
+	// Muda o nome da classe de submenu nativa
+    function change_submenu_class($menu) {
+        $menu = preg_replace('/ class="sub-menu"/', '/ class="submenu" /', $menu);
+        return $menu;
+    }
+    add_filter('wp_nav_menu', 'change_submenu_class');
 
 	/*
 		Remova widgets padrões do wordpress
@@ -85,8 +104,45 @@ function plandd_setup() {
 	}
 	add_action('wp_dashboard_setup', 'remove_dashboard_widgets');
 
+	//limita tamanho do resumo
+	function new_excerpt_length($length) {
+		return 30;
+	}
+	add_filter('excerpt_length', 'new_excerpt_length');
+	// remove paragrafo em resumos
+    remove_filter('the_excerpt', 'wpautop');
+
 }
 add_action('init','plandd_setup');
+
+/**
+ * Renomeia rótulos do post default para 
+ * tratamentos
+ */
+function change_post_menu_label() {
+    global $menu;
+    global $submenu;
+    $menu[5][0] = 'Tratamentos';
+    $submenu['edit.php'][5][0] = 'Tratamentos';
+    $submenu['edit.php'][10][0] = 'Novo Tratamento';
+    echo '';
+}
+function change_post_object_label() {
+    global $wp_post_types;
+    $labels = &$wp_post_types['post']->labels;
+    $labels->name = 'Tratamentos';
+    $labels->singular_name = 'Tratamento';
+    $labels->add_new = 'Adicionar Tratamento';
+    $labels->add_new_item = 'Novo Tratamento';
+    $labels->edit_item = 'Editar Tratamentos';
+    $labels->new_item = 'Tratamento';
+    $labels->view_item = 'Ver Tratamento';
+    $labels->search_items = 'Buscar Tratamentos';
+    $labels->not_found = 'Tratamento não encontrado';
+    $labels->not_found_in_trash = 'Não encontrado';
+}
+add_action( 'init', 'change_post_object_label' );
+add_action( 'admin_menu', 'change_post_menu_label' );
 
 /**
  * Incorpore scripts essenciais para toda a
@@ -126,6 +182,35 @@ function plandd_scripts() {
 
 }
 add_action( 'wp_enqueue_scripts', 'plandd_scripts' );
+
+// Post Types
+// ------------------------------------------------------------------------------------
+
+//Banners
+include_once( get_stylesheet_directory() . '/includes/cpt/banners.php' );
+
+/*
+Icones para post-types
+(http://melchoyce.github.io/dashicons/)
+edit.php?post_type=acf
+*/
+function add_menu_icons_styles() {
+?>
+	<style>
+		#menu-posts div.wp-menu-image:before {
+			content: "\f481";
+		}
+		#menu-posts-banners div.wp-menu-image:before {
+			content: "\f181";
+		}
+		*[id^="est-galeria-description"],
+		*[id^="est-galeria-url"] {
+			display: none !important;
+		}
+	</style>
+	<?php
+}
+add_action('admin_head', 'add_menu_icons_styles');
 
 // Opções do tema
 // ------------------------------------------------------------------------------------
@@ -167,7 +252,7 @@ function tell_user() {
 		exit();
 	}
 
-	if($name && $phone && $dd) {
+	if($name && $phone) {
 		$message = "{$name} solicitou uma ligação para {$dd} - {$phone} a partir do site";
 
 		//Enviar email

@@ -325,7 +325,7 @@ $(document).on('scroll',function() {
   $('li','nav[role="navigation"]').each(function(index, el) {
     var sub = $('.submenu',this);
     if(sub.length)
-      $('a',this).eq(0).append('<i class="icon-triangle-down d-table-cell"></i>');
+      $('a',this).eq(0).append('<i class="icon-icon_arrow-down-menu d-table-cell"></i>');
   });
 
   //Ligamos para você
@@ -345,7 +345,7 @@ $(document).on('scroll',function() {
   $('ul','#main-menu').clone().appendTo('.off-nav'); // clone do menu principal
 
   //apagar luz
-  $('.toggle-menu, .icon-close2, .close-off-menu').on('click',function(e) {
+  $('.toggle-menu, .icon-icon_exit, .close-off-menu').on('click',function(e) {
     e.preventDefault();
     $('#off-canvas').toggleClass('show');
 
@@ -407,7 +407,7 @@ $(document).on('scroll',function() {
     function initialize() {
       var   initLat = $('#map-section').data('lat'),
             initLng = $('#map-section').data('lng'),
-            ic = new google.maps.MarkerImage($('#map-layer').attr('data-brandicon'));
+            ic = new google.maps.MarkerImage($('#map-section').attr('data-brandicon'));
 
       var styleArray = [
         {
@@ -440,10 +440,15 @@ $(document).on('scroll',function() {
         mapTypeId: google.maps.MapTypeId.ROADMAP,
         disableDefaultUI: true,
         mapTypeControl: false,
-        navigationControl: false,
         scaleControl: false,
         scrollwheel: false,
-        backgroundColor: '#f1f1f1'
+        backgroundColor: '#f1f1f1',
+        draggable: false,
+        panControl: true,
+        zoomControl: true,
+        zoomControlOptions: {
+          style: google.maps.ZoomControlStyle.LARGE
+        }
       };
 
       var map = new google.maps.Map(document.getElementById('map-section'),
@@ -527,14 +532,50 @@ function hideNotify(el) {
           $('.call-for-user',$this).html('OK');
         },
         success: function(data) {
-          if(data != 'true') {
-            $('.notify',$this).html('<div data-alert class="alert-box alert radius small-12 left" style="margin-top:20px;">'+ data +' <a href="#" class="close">&times;</a></div>');
+          if($('.notify',$this).length) {
+            if(data != 'true') {
+              $('.notify',$this).html('<div data-alert class="alert-box alert radius small-12 left" style="margin-top:20px;">'+ data +' <a href="#" class="close">&times;</a></div>');
+            } else {
+              $('.notify',$this).html('<div data-alert class="alert-box success radius small-12 left" style="margin-top:20px;">Telefone enviado com sucesso. Aguarde nosso contato.<a href="#" class="close">&times;</a></div>');
+            }
           } else {
-            $('.notify',$this).html('<div data-alert class="alert-box success radius small-12 left" style="margin-top:20px;">Telefone enviado com sucesso. Aguarde nosso contato.<a href="#" class="close">&times;</a></div>');
+            if(data != 'true') {
+              alert("Erro interno. Verifique seu dados.");
+            } else {
+              alert("Telefone enviado com sucesso. Aguarde nossa resposta.");
+            }
           }
           $(document).foundation();
         }
       });
     }
   });
+})();
+
+/**
+ * Serviços
+ */
+(function() {
+    var planos = $(".nav-services");
+    planos.owlCarousel({
+        responsiveBaseWidth: $(".row"),
+        responsive: true,
+        responsiveRefreshRate: 200,
+        pagination: true,
+        itemsCustom: [
+            [200, 1],
+            [700, 3],
+            [800, 4],
+        ],
+        rewindNav: false,
+        rewindSpeed: 300
+    });
+    $(".next-plains").click(function(e) {
+        e.preventDefault();
+        planos.trigger('owl.next');
+    });
+    $(".prev-plains").click(function(e) {
+        e.preventDefault();
+        planos.trigger('owl.prev');
+    });
 })();

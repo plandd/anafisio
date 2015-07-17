@@ -105,7 +105,7 @@
     </div>
 
     <!-- ligamos para você -->
-    <form action="" class="medium-6 large-3 columns show-for-medium-up">
+    <form action="" class="medium-6 large-3 columns show-for-medium-up tel-form">
       <header class="divide-10">
         <h5 class="info divide-10">Ligamos para você</h5>
         <p class="ghost no-margin lh-small text-normal">Deixe seu nome e telefone que ligamos para você!</p>
@@ -120,6 +120,7 @@
 <section id="credits" class="small-12 left bg-primary">
   <div class="row">
     <p class="text-small left ghost no-margin">&copy; Copyright <?php echo date('Y'); ?>. Todos os direitos reservados.</p>
+    <a href="http://plandd.cc" target="_blank" title="Desenvolvido pela Plan - Design e Desenvolvimento" class="right icon-icon_plan white"></a>
   </div>
 </section>
 

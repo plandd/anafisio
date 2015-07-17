@@ -28,6 +28,13 @@
   		height: rem-calc(130);
     }
   }
+  //categoria
+  .post-info {
+    margin-bottom: rem-calc(10); 
+  }
+  .post-card {
+    padding-top: rem-calc(20);
+  }
 }
 @media #{$medium-only} {
   .row {
@@ -62,7 +69,17 @@
   		height: rem-calc(150);
     }
   }
+
+  //categoria
+  .post-info {
+    height: rem-calc(160);
+    h4,p {
+      display: table-cell;
+      vertical-align: middle;
+    }
+  }
 }
+
 @media #{$large-up} {
   //slider home
   .slide-title {
@@ -73,5 +90,14 @@
       margin-top: rem-calc(20);
   		font-size: rem-calc(24);
   	}
+  }
+
+  //categoria
+  .post-info {
+    height: rem-calc(130);
+    h4,p {
+      display: table-cell;
+      vertical-align: middle;
+    }
   }
 }
