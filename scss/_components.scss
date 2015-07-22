@@ -567,6 +567,13 @@ $header_height : rem-calc(110);
 }
 .post-card {
 	border-top: 1px dashed $ghost;
+	&:last-child {
+		border-bottom: 1px dashed $ghost;
+	}
+}
+.post-icon {
+	padding-right: rem-calc(10);
+	font-size: rem-calc(32);
 }
 
 /**

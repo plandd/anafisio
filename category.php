@@ -23,10 +23,16 @@
             </header>
             <?php
                 while (have_posts()) : the_post();
+                global $post;
             ?>
             <div class="post-card small-12 left">
                 <header class="small-12 medium-3 columns d-table post-info">
-                    <h4><a href="<?php the_permalink(); ?>" class="primary" title="<?php the_title(); ?>"><?php the_title(); ?></a></h4>
+                    <h4 class="post-icon">
+                        <span class="<?php echo get_field('icon_tratamento',$post->ID); ?> primary"></span>
+                    </h4>
+                    <h4>
+                        <a href="<?php the_permalink(); ?>" class="primary" title="<?php the_title(); ?>"><?php the_title(); ?></a>
+                    </h4>
                 </header>
                 <article class="small-12 medium-6 columns d-table post-info">
                     <p class="ghost text-normal"><?php the_excerpt(); ?></p>
@@ -38,11 +44,12 @@
             <?php
                 endwhile;
             ?>
-            
-            <div class="divide-20"></div>
-            <article class="small-12 columns text-center">
-                <h1><a href="#" class="button round">ver todos os tratamentos</a></h1>
-            </article>
         </div>
     </nav>
+    
+    <div class="row">
+        <article class="divide-20 column text-center">
+            <h1><a href="#" class="button round">ver todos os tratamentos</a></h1>
+        </article>
+    </div>
 <?php get_footer(); ?>

@@ -35,6 +35,10 @@
   .post-card {
     padding-top: rem-calc(20);
   }
+  .post-icon {
+    float: left;
+    font-size: rem-calc(18);
+  }
 }
 @media #{$medium-only} {
   .row {

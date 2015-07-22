@@ -10,7 +10,7 @@
         //Serviços
         require get_template_directory()."/includes/sections/home_services.php";
         
-        //Contatdores
+        //Contadores
         require get_template_directory()."/includes/sections/counters.php";
         
         //Estrutura
