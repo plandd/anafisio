@@ -303,7 +303,7 @@ $header_height : rem-calc(110);
 		z-index: 99;
 	}
 }
-.home-slider-nav {
+.home-slider-nav, .single-slider-nav {
 	@extend .abs;
 	@extend .d-table;
 	top: 0;
@@ -554,6 +554,10 @@ $header_height : rem-calc(110);
 			margin-bottom: rem-calc(15);
 		}
 	}
+	.post-header {
+		border: none;
+		margin-bottom: 0;
+	}
 }
 .mask-primary {
 	background-color: rgba($primary-color,.9);
@@ -574,6 +578,127 @@ $header_height : rem-calc(110);
 .post-icon {
 	padding-right: rem-calc(10);
 	font-size: rem-calc(32);
+}
+
+//pagina do post
+$single-slider-h: rem-calc(320); // altura do slider interno
+
+.post-subheader {
+	> h4 {
+		line-height: 2.3;
+		border-bottom: 1px dashed $primary-color;
+	}
+}
+
+.post-gallery {
+	height: $single-slider-h;
+	figure {
+		@extend %full-height;
+	}
+}
+.single-slider-nav {
+	height: $single-slider-h;
+	&.next-slide {
+		right: 0;
+	}
+	&.prev-slide {
+		left: 0;
+	}
+}
+.post-content {
+	color: shade($ghost, 30%);
+	h1,h2,h3,h4,h5,h6 {
+		font-size: rem-calc(18);
+		@extend .primary;
+		margin-bottom: rem-calc(20);
+	}
+	iframe,object,embed {
+		@extend .small-12;
+		@extend .left;
+	}
+}
+
+.alignleft {
+	@extend .left;
+	margin-right: rem-calc(10);
+	margin-top: rem-calc(7);
+}
+
+.alignright {
+	@extend .right;
+	margin-left: rem-calc(10);
+	margin-top: rem-calc(7);
+}
+
+.aligncenter {
+	@extend .divide-20;
+	@extend .text-center;
+
+	img {
+		@extend .d-iblock;
+		max-width: 100%;
+		height: auto;
+	}
+}
+.share-post {
+	padding: rem-calc(10 0);
+	border-top: 1px dashed $ghost;
+	border-bottom: 1px dashed $ghost;
+	ul {
+		margin-bottom: 0;
+		margin-top: rem-calc(2.5);
+		line-height: 0;
+		li:first-child {
+			@extend .no-margin;
+		}
+	}
+}
+//Social buttons
+.fb_iframe_widget {
+  	line-height: 1.2;
+}
+div[id^="___plusone"] {
+  	width: 63px !important;
+}
+iframe[name^="oauth"] {
+  	left: 0;
+}
+
+/**
+ * ------------------------------------------------------------------
+ * templates
+ * ------------------------------------------------------------------
+ */
+
+//sobre nós
+#template-intro {
+	height: rem-calc(590);
+	overflow: hidden;
+
+	.mask-primary {
+		background-color: rgba($primary-color, .5);
+	}
+	video,img {
+		z-index: 0;
+		left: 0; top: 0;
+		height: autp;
+	}
+}
+.template-header {
+	h1 {
+		font-size: rem-calc(72);
+	}
+}
+.template-content, #template-carousel {
+	padding: rem-calc(60 0);
+	p {
+		color: shade($ghost, 30%);
+	}
+}
+.template-footer {
+	.d-iblock {
+		margin: rem-calc(0 12);
+	}
 }
 
 /**

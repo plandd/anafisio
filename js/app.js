@@ -571,12 +571,28 @@ function hideNotify(el) {
         rewindNav: false,
         rewindSpeed: 300
     });
-    $(".next-plains").click(function(e) {
+    /*$(".next-plains").click(function(e) {
         e.preventDefault();
         planos.trigger('owl.next');
     });
     $(".prev-plains").click(function(e) {
         e.preventDefault();
         planos.trigger('owl.prev');
+    });*/
+    //#template-carousel
+
+    var planos = $("#template-carousel");
+    planos.owlCarousel({
+        responsiveBaseWidth: $(".row"),
+        responsive: true,
+        responsiveRefreshRate: 200,
+        pagination: true,
+        itemsCustom: [
+            [200, 3],
+            [700, 5],
+            [800, 7],
+        ],
+        rewindNav: false,
+        rewindSpeed: 300
     });
 })();

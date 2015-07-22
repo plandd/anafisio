@@ -32,6 +32,16 @@ a:not(.service-link) {
 	@extend %transition;
 }
 
+//foudation
+.tooltip {
+	border: 1px solid #e1e1e1 !important;
+	@include translateY(rem-calc(-30));
+	box-shadow: 0 3px 4px rgba(0, 0, 0, 0.05);
+	> .nub {
+
+	}
+}
+
 /**
  * ------------------------------------------------------------------
  * Tipografia

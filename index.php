@@ -1,6 +1,6 @@
-<?php get_header(); ?>
+<?php 
+get_header(); 
 
-    <?php
         //Slider principal
         require get_template_directory()."/includes/sections/home_slider.php";
         
@@ -18,6 +18,6 @@
 
         //MAp
         require get_template_directory()."/includes/sections/map.php";
-    ?>
 
-<?php get_footer(); ?>
+get_footer();
+?>

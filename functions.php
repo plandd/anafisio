@@ -69,6 +69,7 @@ function plandd_setup() {
 
     if (function_exists('add_image_size')) {
         add_image_size('estrutura', 242, 220, true);
+        add_image_size('tratamento', 780, 320, true);
     }
 
 	/**
