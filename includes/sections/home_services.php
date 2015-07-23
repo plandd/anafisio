@@ -6,7 +6,7 @@
 
       <nav class="nav-services small-12 left owl-carousel owl-theme owl-responsive-1000 owl-loaded">
         <?php
-          $terms = get_terms('category', 'orderby=rand&hide_empty=0');
+          $terms = get_terms('category', 'orderby=rand&hide_empty=0&exclude=1');
           foreach ($terms as $term):
         ?>
         <div class="item column rel service-card">

@@ -103,6 +103,12 @@ a:not(.service-link) {
 	line-height: 1.2;
 }
 
+//botões
+.btn-lite {
+	padding: rem-calc(10 15);
+	font-size: rem-calc(14);
+}
+
 /**
  * ------------------------------------------------------------------
  * Backgrounds
@@ -191,4 +197,27 @@ a:not(.service-link) {
 	-moz-column-gap:10px;
 	-webkit-column-gap:10px;
 	column-gap:10px;
+}
+
+/**
+ * ------------------------------------------------------------------
+ * Formulários
+ * ------------------------------------------------------------------
+ */
+.custom-form {
+	input,textarea {
+		border: none;
+		box-shadow: none;
+		border-bottom: 1px solid tint($ghost,40%);
+		&:hover {
+			background-color: $white;
+		}
+	}
+}
+
+label {
+	span {
+		@extend .d-iblock;
+		margin-left: rem-calc(10);
+	}
 }

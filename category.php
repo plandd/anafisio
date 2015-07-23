@@ -26,7 +26,7 @@
                 global $post;
             ?>
             <div class="post-card small-12 left">
-                <header class="small-12 medium-3 columns d-table post-info">
+                <header class="small-12 medium-4 columns d-table post-info">
                     <h4 class="post-icon">
                         <span class="<?php echo get_field('icon_tratamento',$post->ID); ?> primary"></span>
                     </h4>
@@ -37,8 +37,8 @@
                 <article class="small-12 medium-6 columns d-table post-info">
                     <p class="ghost text-normal"><?php the_excerpt(); ?></p>
                 </article>
-                <footer class="small-12 medium-3 columns d-table post-info text-right">
-                    <p><a href="<?php the_permalink(); ?>" title="<?php the_title(); ?>" class="button round no-margin">Ver tratamento</a></p>
+                <footer class="small-12 medium-2 columns d-table post-info text-right">
+                    <p><a href="<?php the_permalink(); ?>" title="<?php the_title(); ?>" class="button btn-lite round no-margin">Ver tratamento</a></p>
                 </footer>
             </div>
             <?php

@@ -113,6 +113,7 @@
       <p class="left small-12 no-margin"><input type="text" name="nome" placeholder="Seu nome" required></p>
       <p class="left small-12 no-margin"><input type="tel" name="telefone" placeholder="Seu telefone" required></p>
       <p class="left no-margin"><input type="submit" value="OK" class="right button info no-margin call-for-user"></p>
+      <input type="hidden" name="page" value="<?php echo  is_home() ? 'Home' : wp_title(''); ?>">
     </form>
   </div>
 </footer>

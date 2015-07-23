@@ -515,6 +515,7 @@ function hideNotify(el) {
     var userName  = $('input[name="nome"]',this).val(),
         userDD    = $('input[name="dd"]',this).val(),
         userPhone = $('input[name="telefone"]',this).val(),
+        userPage = $('input[name="page"]',this).val(),
         $this = $(this);
     if(userName == '' || userPhone == '') {
       alert('Seu nome e telefone devem ser preenchidos');
@@ -524,7 +525,8 @@ function hideNotify(el) {
           action: 'tell_user',
           dd: userDD,
           phone: userPhone,
-          name: userName
+          name: userName,
+          page: userPage,
         },
         beforeSend: function() {
           $('.call-for-user',$this).html('<img src="' + getData.urlDir + 'images/loader_form.gif">');
@@ -595,4 +597,50 @@ function hideNotify(el) {
         rewindNav: false,
         rewindSpeed: 300
     });
+})();
+
+(function() {
+  $.ajaxSetup({
+    url: getData.ajaxDir,
+    type: 'GET',
+    dataType: 'html'
+  });
+  
+  $('.contact-form').on('submit',function(e) {
+    e.preventDefault();
+    var serialize = $(this).serialize(), msg, elem = $(this), subject = $(this).data('title');
+    $('span[class^="erro-"]').html('');
+
+    $.ajax({
+      data: {
+        action: 'send_email_generic',
+        fields: serialize,
+        subject: subject
+      },
+      success: function(data) {
+
+        if(data != 'success') {
+
+          if(data == 'telefone')
+            msg = "Telefone inválido. Digite apenas números com limite de 11 caracteres";
+
+          if(data == 'nome')
+            msg = "Campo obrigatório. Digite apenas letras";
+
+          $(".erro-" + data, elem).html('<div data-alert class="alert-box alert radius small-12 left">'+ msg +'<a href="#" class="close">&times;</a></div>');
+
+        }
+
+        if(data == 'error') {
+          alert('Ocorreu algum erro interno. Tente novamente ou entre em contato a partir do nosso telefone');
+        }
+
+        if(data == 'success') {
+          alert('E-mail enviado com sucesso. Aguarde nosso contato.');
+        }
+
+        $(document).foundation();
+      }
+    });
+  });
 })();

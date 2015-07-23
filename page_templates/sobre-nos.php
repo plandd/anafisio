@@ -8,6 +8,7 @@
     global $post;
     $video = get_field('template_video',$post->ID);
     $imgbg = get_field('template_imgbg',$post->ID);
+    $contato = get_page_by_title('Contato');
 ?>
     <section id="template-intro" class="small-12 left rel d-table" <?php if(empty($video)) echo 'data-thumb="'. $imgbg .'"'; ?>>
         <?php
@@ -36,8 +37,16 @@
     <div class="small-12 left template-content">
         <div class="row">
             <div class="blockquote small-12 medium-5 columns">
-                <h2 class="primary divide-10"><?php echo get_field('template_block',$post->ID); ?></h2>
-                <h5 class="divide-20 ghost font-regular"><?php echo get_field('template_bckexc',$post->ID); ?></h5>
+                <h2 class="primary divide-10 text-right"><?php echo get_field('template_block',$post->ID); ?></h2>
+                <h5 class="divide-20 ghost font-regular text-right"><?php echo get_field('template_bckexc',$post->ID); ?></h5>
+                <?php
+                    $thumb = wp_get_attachment_image_src(get_post_thumbnail_id($post->ID), 'full');
+                    if(isset($thumb)):
+                ?>
+                <figure class="small-12 left text-center">
+                    <img src="<?php echo $thumb[0]; ?>" alt="" class="d-iblock">
+                </figure>
+                <?php endif; ?>
             </div>
 
             <article class="small-12 medium-7 columns two-columns">
@@ -47,7 +56,10 @@
                     endwhile; endif;
                 ?>  
             </article>
-
+            
+            <?php
+                if(get_the_title($post->ID) == 'Sobre nós'):
+            ?>
             <nav id="template-carousel" class="small-12 columns">
                 <?php
                     $args = array( 'posts_per_page' => -1, 'taxonomy' => 'category' );
@@ -65,8 +77,15 @@
             <footer class="small-12 columns text-center template-footer">
                 <h1 class="d-iblock"><a href="#" class="button round" title="Veja todos os tratamentos">ver todos os tratamentos</a></h1>
                 <h4 class="font-lite primary d-iblock">ou</h4>
-                <h1 class="d-iblock"><a href="#" class="button round" title="Entre em contato">entre em contato</a></h1>
+                <h1 class="d-iblock"><a href="<?php echo get_page_link($contato->ID); ?>" class="button round" title="Entre em contato">entre em contato</a></h1>
             </footer>
+            <?php else: ?>
+            <footer class="small-12 columns text-center template-footer">
+                <div class="divide-20"></div>
+                <h1 class="d-iblock"><a href="<?php echo get_page_link($contato->ID); ?>" class="button round" title="Solicite-nos uma visita">solicite uma visita</a></h1>
+            </footer>
+            <?php endif; ?>
+
         </div>
     </div>
 <?php get_footer(); ?>

@@ -51,7 +51,7 @@ function plandd_acf_dir( $dir ) {
 include_once( get_stylesheet_directory() . '/includes/acf/acf.php' );
 include_once( get_stylesheet_directory() . '/includes/acf-repeater/acf-repeater.php' );
 //define( 'ACF_LITE' , true );
-//include_once( get_stylesheet_directory() . '/inc/acf/preconfig.php' );
+//include_once( get_stylesheet_directory() . '/includes/acf/preconfig.php' );
 
 /**
  * Esta função será chamada logo após a inicialização da aplicação
@@ -401,6 +401,7 @@ function tell_user() {
 	$phone = filter_var($_GET['phone'],FILTER_SANITIZE_NUMBER_INT);
 	$dd = filter_var($_GET['dd'],FILTER_SANITIZE_NUMBER_INT);
 	$name = filter_var($_GET['name'],FILTER_SANITIZE_STRING);
+	$page = filter_var($_GET['page'],FILTER_SANITIZE_STRING);
 
 	if(!$phone) {
 		echo 'Telefone inválido';
@@ -413,7 +414,7 @@ function tell_user() {
 	}
 
 	if($name && $phone) {
-		$message = "{$name} solicitou uma ligação para {$dd} - {$phone} a partir do site";
+		$message = "{$name} solicitou uma ligação para {$dd} - {$phone} a partir do site através da página " . $page;
 
 		//Enviar email
 		if(wp_mail( $sendTo, '[Ligue pra mim] - Anafisio', $message ))
@@ -423,6 +424,73 @@ function tell_user() {
 			
 	} else {
 		echo 'Algum campo está digitado incorretamente.';
+	}
+
+	exit();
+}
+
+add_action('wp_ajax_nopriv_send_email_generic', 'send_email_generic');
+add_action('wp_ajax_send_email_generic', 'send_email_generic');
+
+function send_email_generic() {
+	global $plandd_option;
+
+	$fields = $_GET['fields'];
+	$subject = $_GET['subject'];
+
+	$params = array();
+	parse_str($fields, $params);
+	//print_r($params);
+	$valNome = false;
+	$valTelefone = false;
+	$mensagem = 'Mensagem vazia';
+
+	if(array_key_exists('nome', $params) && !empty($params['nome'])) {
+		$nome = filter_var($params['nome'],FILTER_SANITIZE_STRING);
+		if(!$nome || strlen($nome) > 300) {
+			echo 'nome';
+			exit();
+		} else {
+			$valNome = true;
+		}
+	}
+
+	if(array_key_exists('email', $params) && !empty($params['email'])) {
+		$email = filter_var($params['email'],FILTER_VALIDATE_EMAIL);
+	}
+
+	if(array_key_exists('papel', $params) && !empty($params['papel'])) {
+		$papel = filter_var($params['papel'],FILTER_SANITIZE_STRING);
+	}
+
+	if(array_key_exists('telefone', $params) && !empty($params['telefone'])) {
+		$telefone = filter_var($params['telefone'],FILTER_VALIDATE_INT);
+		if(!$telefone || strlen($telefone) > 11) {
+			echo 'telefone';
+			exit();
+		} else {
+			$valTelefone = true;
+		}
+	}
+
+	if(array_key_exists('mensagem', $params) && !empty($params['mensagem'])) {
+		$mensagem = filter_var($params['mensagem'],FILTER_SANITIZE_STRING);
+	}
+/*, $headers, $attachments*/
+
+	if($valNome && $valTelefone) {
+		$msg = $mensagem . "\n";
+		$msg .= "Telefone: ". $telefone ."\n";
+		$msg .= "Da página: ". $params['page'] ."\n";
+		if ($papel) {
+			$msg .= "Papel: " . $papel ."\n";
+		}
+
+		if(wp_mail( $plandd_option['inst-email'], '['. $subject .']', $msg )) {
+			echo 'success';
+		} else {
+			echo 'error';
+		}
 	}
 
 	exit();

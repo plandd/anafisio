@@ -131,8 +131,12 @@
     column-gap:0;
   }
   .blockquote {
+    h5 {
+      padding-right: rem-calc(20);
+    }
     h2 {
       font-size: rem-calc(24);
+      padding-right: rem-calc(20);
     }
   }
 }
@@ -183,9 +187,13 @@
   }
 
   .blockquote {
+    h5 {
+      padding-right: rem-calc(20);
+    }
     h2 {
       font-size: rem-calc(30);
       position: relative;
+      padding-right: rem-calc(20);
       &:after {
         content: "";
         position: absolute;
