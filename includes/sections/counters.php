@@ -26,6 +26,6 @@
 
       <article class="small-12 columns text-center">
         <h3 class="font-regular primary divide-20"><?php echo $plandd_option['number-desc']; ?></h3>
-        <h1><a href="#" class="button round">ver todos os tratamentos</a></h1>
+        <h1><a href="<?php echo get_category_link(1); ?>" class="button round">ver todos os tratamentos</a></h1>
       </article>
     </section>

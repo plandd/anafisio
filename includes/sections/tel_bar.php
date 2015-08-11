@@ -9,7 +9,7 @@
         </header>
         <form action="" class="small-7 columns form-bar tel-form">
           <input type="text" class="left" name="nome" placeholder="Nome">
-          <input type="text" class="left" name="telefone" placeholder="Telefone">
+          <input type="text" class="left phone" name="telefone" placeholder="Telefone">
           <button type="submit" class="right button info no-margin call-for-user">OK</button>
         </form>
       </div>

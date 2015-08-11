@@ -13,11 +13,20 @@
       var getData = {
         'urlDir':'<?php bloginfo('template_directory');?>/',
         'ajaxDir':'<?php echo stripslashes(get_admin_url()).'admin-ajax.php';?>',
-        'apiKey' : '<?php echo get_option('jt_api_key');?>'
+        <?php 
+          $page = get_page_by_title('Confirmação de email');
+          if($page)
+            echo "'redirect_page' : '" . get_page_link($page->ID) . "'";
+        ?>
       }
       //]]>
     </script>
-    <?php wp_head(); ?>
+    <?php
+      global $plandd_option;
+      echo $plandd_option['opt-textarea-ga'];
+      wp_head(); 
+    ?>
+
   </head>
   <body>
     <!-- menu off-canvas -->
@@ -44,15 +53,15 @@
           <ul class="inline-list no-margin right">
             <?php
               $defaults = array(
-              	'theme_location'  => '',
+              	'theme_location'  => 'primary',
               	'menu'            => 'Menu principal',
               	'container'       => '',
               	'container_class' => '',
               	'container_id'    => '',
               	'menu_class'      => '',
-              	'menu_id'         => '',
+              	'menu_id'         => 'primary',
               	'echo'            => true,
-              	'fallback_cb'     => 'main_menu',
+              	'fallback_cb'     => 'primary',
               	'before'          => '',
               	'after'           => '',
               	'link_before'     => '<span>',

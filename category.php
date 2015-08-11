@@ -34,10 +34,10 @@
                         <a href="<?php the_permalink(); ?>" class="primary" title="<?php the_title(); ?>"><?php the_title(); ?></a>
                     </h4>
                 </header>
-                <article class="small-12 medium-6 columns d-table post-info">
+                <article class="small-12 medium-5 large-6 columns d-table post-info">
                     <p class="ghost text-normal"><?php the_excerpt(); ?></p>
                 </article>
-                <footer class="small-12 medium-2 columns d-table post-info text-right">
+                <footer class="small-12 medium-3 large-2 columns d-table post-info text-right">
                     <p><a href="<?php the_permalink(); ?>" title="<?php the_title(); ?>" class="button btn-lite round no-margin">Ver tratamento</a></p>
                 </footer>
             </div>
@@ -46,10 +46,12 @@
             ?>
         </div>
     </nav>
-    
+    <?php
+        if(!is_category( 'tratamentos' )):
+    ?>
     <div class="row">
         <article class="divide-20 column text-center">
-            <h1><a href="#" class="button round">ver todos os tratamentos</a></h1>
+            <h1><a href="<?php echo get_category_link(1); ?>" class="button round">ver todos os tratamentos</a></h1>
         </article>
     </div>
-<?php get_footer(); ?>
+<?php endif; get_footer(); ?>

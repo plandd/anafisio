@@ -258,11 +258,9 @@ $(document).foundation();
 
 })(jQuery);
 
-$(document).foundation();
-//http://es2adizg32j3kob5.onion/
-
 $(document).ready(function() {
     $('#jpreBar', '#jpreLoader').clone().appendTo('#main-menu');
+
     $('body').jpreLoader({
         //loaderVPos: '41.5%',
         //splashID: '#logo-footer',
@@ -506,6 +504,10 @@ function hideNotify(el) {
   $('.notify',el).fadeOut('fast');
 }
 
+function redirectAfterForm() {
+  window.location.href = getData.redirect_page;
+}
+
 /**
  * Ligamos para voce
  */
@@ -517,6 +519,10 @@ function hideNotify(el) {
         userPhone = $('input[name="telefone"]',this).val(),
         userPage = $('input[name="page"]',this).val(),
         $this = $(this);
+    
+    //Apenas numeros para telefones
+    
+
     if(userName == '' || userPhone == '') {
       alert('Seu nome e telefone devem ser preenchidos');
     } else {
@@ -546,6 +552,7 @@ function hideNotify(el) {
               alert("Erro interno. Verifique seu dados.");
             } else {
               alert("Telefone enviado com sucesso. Aguarde nossa resposta.");
+              redirectAfterForm();
             }
           }
           $(document).foundation();
@@ -637,6 +644,7 @@ function hideNotify(el) {
 
         if(data == 'success') {
           alert('E-mail enviado com sucesso. Aguarde nosso contato.');
+          redirectAfterForm();
         }
 
         $(document).foundation();

@@ -410,6 +410,31 @@
         )
     ) );
 
+    Redux::setSection( $opt_name, array(
+        'title'      => __( 'Scripts adicionais', 'redux-framework-demo' ),
+        'id'         => 'plandd-scripts',
+        'desc'       => 'Acrescente javascript ou css no corpo da aplicação',
+        'icon'      => 'el el-cogs',
+        'fields'     => array(
+            array(
+                'id'       => 'opt-textarea-ga',
+                'type'     => 'textarea',
+                'title'    => __( 'Google Analytics', 'redux-framework-demo' ),
+                'subtitle' => __( 'Obrigatório as tags', 'redux-framework-demo' ),
+                'desc'     => __( 'O código do analytics roda no cabeçalho de todas as páginas', 'redux-framework-demo' ),
+                'default'  => '<script></script>',
+            ),
+            array(
+                'id'       => 'opt-textarea-ft',
+                'type'     => 'textarea',
+                'title'    => __( 'Rodapé', 'redux-framework-demo' ),
+                'subtitle' => __( 'Obrigatório as tags', 'redux-framework-demo' ),
+                'desc'     => __( 'O código do colado aqui será execudato após o carregamento dos arquivos da aplidação', 'redux-framework-demo' ),
+                'default'  => '<script></script>',
+            )
+        )
+    ) );
+
     /*
      * <--- END SECTIONS
      */

@@ -31,6 +31,16 @@
     <figure class="small-12 full-height" data-thumb="<?php echo get_field('banner_bg'); ?>" role="banner">
       <a href="<?php echo get_field('banner_uri'); ?>" title="<?php the_title(); ?>"></a>
       <div class="slider-mask small-12 full-height abs"></div>
+      <?php
+          //background
+          if(get_field('slider_video',$post->ID)):
+      ?>
+      <video class="abs small-12 show-for-large-up" loop autoplay muted>
+          <source src="<?php echo get_field('slider_video',$post->ID); ?>" type="video/mp4">
+      </video>
+      <?php
+          endif;
+      ?>
       <div class="row d-table">
         <article class="small-12 d-table-cell text-center">
           <h2 class="white slide-title"><?php the_title(); ?></h2>

@@ -411,6 +411,56 @@ if(function_exists("register_field_group"))
 		),
 		'menu_order' => 0,
 	));
+	register_field_group(array (
+		'id' => 'acf_midia-destacada-2',
+		'title' => 'Mídia destacada',
+		'fields' => array (
+			array (
+				'key' => 'field_55c9638455c02',
+				'label' => 'Vídeo',
+				'name' => 'slider_video',
+				'type' => 'file',
+				'save_format' => 'url',
+				'library' => 'all',
+			),
+			array (
+				'key' => 'field_55c966a3adb95',
+				'label' => 'Imagem',
+				'name' => 'slider_imagem',
+				'type' => 'image',
+				'save_format' => 'url',
+				'preview_size' => 'full',
+				'library' => 'all',
+			),
+		),
+		'location' => array (
+			array (
+				array (
+					'param' => 'post_type',
+					'operator' => '==',
+					'value' => 'post',
+					'order_no' => 0,
+					'group_no' => 0,
+				),
+			),
+			array (
+				array (
+					'param' => 'post_type',
+					'operator' => '==',
+					'value' => 'banners',
+					'order_no' => 0,
+					'group_no' => 1,
+				),
+			),
+		),
+		'options' => array (
+			'position' => 'side',
+			'layout' => 'default',
+			'hide_on_screen' => array (
+			),
+		),
+		'menu_order' => 0,
+	));
 }
 
 ?>

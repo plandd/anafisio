@@ -9,12 +9,12 @@
     $video = get_field('template_video',$post->ID);
     $imgbg = get_field('template_imgbg',$post->ID);
 ?>
-    <section id="template-intro" class="small-12 left rel d-table" <?php if(empty($video)) echo 'data-thumb="'. $imgbg .'"'; ?>>
+    <section id="template-intro" class="small-12 left rel d-table" <?php if(!empty($imgbg)) echo 'data-thumb="'. $imgbg .'"'; ?>>
         <?php
             //background
             if(!empty($video)):
         ?>
-        <video class="abs small-12" loop autoplay muted>
+        <video class="abs small-12 show-for-large-up" loop autoplay muted>
             <source src="<?php echo $video; ?>" type="video/mp4">
             <img src="<?php echo $imgbg; ?>" alt="">
         </video>

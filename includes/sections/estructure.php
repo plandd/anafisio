@@ -9,14 +9,18 @@
           <?php
             global $plandd_option;
             $gallery = $plandd_option['est-galeria'];
+            shuffle($gallery);
+            $i = 0;
             foreach ($gallery as $pic):
+              if(8 == $i)
+                break;
+              $i++;
+
+              $thumb = wp_get_attachment_image_src( $pic['attachment_id'], 'medium' );
           ?>
           <figure class="small-6 medium-3 left rel">
-            <div class="small-12 abs" data-thumb="<?php echo $pic['thumb']; ?>"></div>
+            <div class="small-12 abs" data-thumb="<?php echo $thumb['0']; ?>"></div>
             <a href="<?php echo $pic['image']; ?>" class="d-block small-12 abs" data-lightbox="estrutura" data-title="<?php echo $pic['title']; ?>">
-              <div class="abs small-12 text-center">
-                <span class="icon-icon_picture"></span>
-              </div>
               <figcaption class="small-12 abs">
                 <h5 class="primary font-regular"><?php echo $pic['title']; ?></h5>
               </figcaption>

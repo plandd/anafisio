@@ -69,6 +69,9 @@
     -webkit-column-gap:0;
     column-gap:0;
   }
+  #category-intro {
+    height: rem-calc(150);
+  }
 }
 @media #{$medium-only} {
   .row {
@@ -152,6 +155,13 @@
   		font-size: rem-calc(24);
   	}
   }
+  
+  //serviços
+  .service-card {
+    h1 {
+      font-size: 3rem;
+    }
+  }
 
   //categoria
   .post-info {
@@ -160,6 +170,14 @@
       display: table-cell;
       vertical-align: middle;
     }
+    h4:last-child {
+      text-align: center;
+    }
+  }
+  .post-icon {
+    font-size: 5rem;
+    @include translateY(rem-calc(8));
+    width: rem-calc(100);
   }
   
   //templates
@@ -194,16 +212,27 @@
       font-size: rem-calc(30);
       position: relative;
       padding-right: rem-calc(20);
+      line-height: 1.2;
       &:after {
         content: "";
         position: absolute;
-        top: 0; right: 0;
+        top: rem-calc(7); right: 0;
         display: block;
         width: rem-calc(5);
         height: rem-calc(60);
         background-color: $primary-color;
       }
     }
+  }
+
+  .post-header {
+    h1 {
+      font-size: 5rem;
+    }
+  }
+
+  .post-content {
+    margin-bottom: rem-calc(40);
   }
   
 }

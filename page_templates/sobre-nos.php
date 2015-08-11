@@ -10,12 +10,12 @@
     $imgbg = get_field('template_imgbg',$post->ID);
     $contato = get_page_by_title('Contato');
 ?>
-    <section id="template-intro" class="small-12 left rel d-table" <?php if(empty($video)) echo 'data-thumb="'. $imgbg .'"'; ?>>
+    <section id="template-intro" class="small-12 left rel d-table" <?php if(!empty($imgbg)) echo 'data-thumb="'. $imgbg .'"'; ?>>
         <?php
             //background
             if(!empty($video)):
         ?>
-        <video class="abs small-12" loop autoplay muted>
+        <video class="abs small-12 show-for-large-up" loop autoplay muted>
             <source src="<?php echo $video; ?>" type="video/mp4">
             <img src="<?php echo $imgbg; ?>" alt="">
         </video>
@@ -68,14 +68,14 @@
                 ?>
                 <div class="item column left">
                     <figure class="small-12 left text-center">
-                        <h1><a href="#" data-tooltip aria-haspopup="true" title="<?php the_title(); ?>" class="has-tip tip-bottom radius d-iblock small-12 <?php echo get_field('icon_tratamento',$post->ID); ?>"></a></h1>
+                        <h1><a href="#" data-tooltip aria-haspopup="true" title="<?php the_title(); ?>" class="has-tip tip-top radius d-iblock small-12 <?php echo get_field('icon_tratamento',$post->ID); ?>"></a></h1>
                     </figure>
                 </div>
                 <?php endforeach; ?>
             </nav>
 
             <footer class="small-12 columns text-center template-footer">
-                <h1 class="d-iblock"><a href="#" class="button round" title="Veja todos os tratamentos">ver todos os tratamentos</a></h1>
+                <h1 class="d-iblock"><a href="<?php echo get_category_link(1); ?>" class="button round" title="Veja todos os tratamentos">ver todos os tratamentos</a></h1>
                 <h4 class="font-lite primary d-iblock">ou</h4>
                 <h1 class="d-iblock"><a href="<?php echo get_page_link($contato->ID); ?>" class="button round" title="Entre em contato">entre em contato</a></h1>
             </footer>

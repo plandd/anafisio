@@ -9,7 +9,7 @@
  */
 
 //Versão do tema (RELEASES)
-define('THEME_VERSION', '1.0.1');
+define('THEME_VERSION', '1.0.3');
 
 //Icone do tema
 define('THEME_ICON', get_stylesheet_directory_uri() . '/images/icon.png');
@@ -51,7 +51,7 @@ function plandd_acf_dir( $dir ) {
 include_once( get_stylesheet_directory() . '/includes/acf/acf.php' );
 include_once( get_stylesheet_directory() . '/includes/acf-repeater/acf-repeater.php' );
 //define( 'ACF_LITE' , true );
-//include_once( get_stylesheet_directory() . '/includes/acf/preconfig.php' );
+include_once( get_stylesheet_directory() . '/includes/acf/preconfig.php' );
 
 /**
  * Esta função será chamada logo após a inicialização da aplicação
@@ -77,8 +77,7 @@ function plandd_setup() {
 	 */
 	register_nav_menus( array(
 		'primary' => __( 'Menu principal',   'plandd' ),
-    	'secondary'  => __( 'Menu institucional', 'plandd' ),
-		'terciary'  => __( 'Menu tratamentos', 'plandd' ),
+    	'secondary'  => __( 'Menu institucional', 'plandd' )
 	) );
 
 	// Muda o nome da classe de submenu nativa
@@ -112,6 +111,38 @@ function plandd_setup() {
 	add_filter('excerpt_length', 'new_excerpt_length');
 	// remove paragrafo em resumos
     remove_filter('the_excerpt', 'wpautop');
+
+    //Ativa item no menu para postagens filhas
+    add_filter('wp_nav_menu_objects', 'add_menu_parent_class');
+    function add_menu_parent_class($items) {
+    	//print_r($items);
+
+        foreach ($items as $item) {
+        	
+    		if($item->title == "Tratamentos") {
+    			$args = array(
+			        'posts_per_page' => -1,
+			        'order' => 'ASC',
+			        'orderby' => 'title'
+			    );
+
+			    $posts = get_posts( $args );
+			    
+			    foreach ($posts as $post) { 
+				    setup_postdata( $post );
+				    $link = array (
+			            'title'            => get_the_title( $post->ID ),
+			            'menu_item_parent' => $item->ID,
+			            'ID'               => '',
+			            'db_id'            => '',
+			            'url'              => get_permalink($post->ID)
+				    );
+				    $items[] = (object) $link;
+			    }
+    		}
+        }
+        return $items;
+    }
 
 }
 add_action('init','plandd_setup');
@@ -398,8 +429,8 @@ add_action('wp_ajax_tell_user', 'tell_user');
 function tell_user() {
 	global $plandd_option;
 	$sendTo = $plandd_option['inst-email'];
-	$phone = filter_var($_GET['phone'],FILTER_SANITIZE_NUMBER_INT);
-	$dd = filter_var($_GET['dd'],FILTER_SANITIZE_NUMBER_INT);
+	$phone = filter_var($_GET['phone'],FILTER_SANITIZE_STRING);
+	$dd = filter_var($_GET['dd'],FILTER_SANITIZE_STRING);
 	$name = filter_var($_GET['name'],FILTER_SANITIZE_STRING);
 	$page = filter_var($_GET['page'],FILTER_SANITIZE_STRING);
 
@@ -463,9 +494,12 @@ function send_email_generic() {
 		$papel = filter_var($params['papel'],FILTER_SANITIZE_STRING);
 	}
 
+	/**
+	 * Telefone
+	 */
 	if(array_key_exists('telefone', $params) && !empty($params['telefone'])) {
-		$telefone = filter_var($params['telefone'],FILTER_VALIDATE_INT);
-		if(!$telefone || strlen($telefone) > 11) {
+		$telefone = filter_var($params['telefone'],FILTER_SANITIZE_STRING);
+		if(!$telefone || strlen($telefone) > 30) {
 			echo 'telefone';
 			exit();
 		} else {
@@ -476,7 +510,6 @@ function send_email_generic() {
 	if(array_key_exists('mensagem', $params) && !empty($params['mensagem'])) {
 		$mensagem = filter_var($params['mensagem'],FILTER_SANITIZE_STRING);
 	}
-/*, $headers, $attachments*/
 
 	if($valNome && $valTelefone) {
 		$msg = $mensagem . "\n";
@@ -495,5 +528,59 @@ function send_email_generic() {
 
 	exit();
 }
+
+// Shortcodes
+// ------------------------------------------------------------------------------------
+function button_tratamentos( $atts ) {
+	$atts = shortcode_atts( array(
+		'btn_type' => 'primary',
+		'rotulo' => 'Ver todos os tratamentos'
+	), $atts, 'tratamentos' );
+
+	$html = "<div class=\"small-12 left text-center\"><h2><a href=\"". get_category_link(1) ."\" title=\"{$atts['rotulo']}\" class=\"button round white {$atts['btn_type']}\">{$atts['rotulo']}</a></h2></div>";
+	
+	return $html;
+}
+add_shortcode( 'tratamentos', 'button_tratamentos' );
+
+function button_ligamos( $atts ) {
+	$atts = shortcode_atts( array(
+		'btn_type' => 'primary',
+		'rotulo' => 'Ligamos para você'
+	), $atts, 'solicitar-fone' );
+
+	ob_start();
+	?>
+	<form id="call-us-form" class="tel-form" novalidate="novalidate">
+        <header class="divide-20">
+          <h6 class="ghost">Deixe seu nome e telefone que ligaremos para você!</h6>
+        </header>
+        <p>
+          <label><input type="text" name="nome" placeholder="Seu nome" pattern="alpha_numeric" required></label>
+        </p>
+        <p class="small-2 left no-margin">
+          <input type="text" name="dd" placeholder="DD" maxlength="2" pattern="number" required>
+        </p>
+        <p class="small-10 left pd-left-20 no-margin">
+          <input type="text" name="telefone" placeholder="Seu telefone" maxlength="9" pattern="number" required>
+        </p>
+        <p>
+          <button type="submit" class="button radius info small-12 left no-margin call-for-user">Ligue para mim</button>
+          <div class="notify small-12 left"></div>
+        </p>
+        <input type="hidden" name="page" value="<?php echo  is_home() ? 'Home' : wp_title(''); ?>">
+    </form>
+	<?php
+
+	$output = ob_get_contents();
+	ob_end_clean();
+
+	$html = "<div data-reveal-id=\"form-fone\" class=\"small-12 left text-center\"><h2><a href=\"#\" title=\"{$atts['rotulo']}\" class=\"button round white {$atts['btn_type']}\">{$atts['rotulo']}</a></h2></div>";
+	$html .= '<div id="form-fone" class="reveal-modal small" data-reveal aria-labelledby="modalTitle" aria-hidden="true" role="dialog">'. $output .'<a class="close-reveal-modal" aria-label="Close">&#215;</a></div>';
+	
+	return $html;
+}
+add_shortcode( 'solicitar-fone', 'button_ligamos' );
+
 
 ?>

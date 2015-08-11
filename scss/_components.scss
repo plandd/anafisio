@@ -166,7 +166,7 @@ $header_height : rem-calc(110);
 				opacity: 1;
 			}
 		}
-		&:hover, &.current-menu-item {
+		&:hover, &.current-menu-item, &.current-post-parent, &.current-post-ancestor {
 			> a {
 				@extend .primary;
 				border-color: $primary-color;
@@ -269,6 +269,7 @@ $header_height : rem-calc(110);
 }
 #home-slider {
 	@extend %slider-height;
+	overflow: hidden;
 	z-index: 9;
 	.row {
 		@extend %slider-height;
@@ -339,8 +340,8 @@ $header_height : rem-calc(110);
 
 }
 .slider-mask {
-	background-color: rgba($secondary-color,.6);
-	z-index: 0;
+	background-color: rgba($secondary-color,.3);
+	z-index: 5;
 }
 
 .slider-bullets {
@@ -546,10 +547,13 @@ $header_height : rem-calc(110);
 //Categoria, Arquivo
 #category-intro {
 	height: rem-calc(260);
+	overflow: hidden;
 	@extend .d-table;
 	header {
 		border-bottom: 1px solid $white;
 		margin-bottom: rem-calc(20);
+		@extend .rel;
+		z-index: 10;
 		h3 {
 			margin-bottom: rem-calc(15);
 		}
@@ -558,11 +562,16 @@ $header_height : rem-calc(110);
 		border: none;
 		margin-bottom: 0;
 	}
+	video {
+		z-index: 0;
+		top: -10%;
+	}
 }
 .mask-primary {
 	background-color: rgba($primary-color,.9);
 	@extend %full-height;
 	top: 0; left: 0;
+	z-index: 9;
 }
 
 //lista de posts
@@ -700,6 +709,9 @@ iframe[name^="oauth"] {
 		margin: rem-calc(0 12);
 	}
 }
+input#anexo {
+	border: none !important;
+}
 
 /**
  * ------------------------------------------------------------------
@@ -751,11 +763,14 @@ iframe[name^="oauth"] {
 	// a:hover {
 	// 	padding-left: rem-calc(10);
 	// }
-	&:nth-child(1n+1) {
+	&.footer-tratamentos {
 		li {
 			width: 50%;
 			margin-left: 0;
 		}
+	}
+	.submenu {
+		display: none;
 	}
 }
 #credits {

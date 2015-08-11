@@ -49,15 +49,15 @@
         <ul class="no-bullet no-margin text-normal">
           <?php
             $defaults = array(
-              'theme_location'  => '',
+              'theme_location'  => 'secondary',
               'menu'            => 'Menu institucional',
               'container'       => '',
               'container_class' => '',
               'container_id'    => '',
               'menu_class'      => '',
-              'menu_id'         => '',
+              'menu_id'         => 'secondary',
               'echo'            => true,
-              'fallback_cb'     => 'main_menu',
+              'fallback_cb'     => 'secondary',
               'before'          => '',
               'after'           => '',
               'link_before'     => '',
@@ -73,33 +73,25 @@
     </div>
 
     <!-- menu tratamentos -->
-    <div class="small-4 columns custom-menu">
+    <div class="small-4 columns custom-menu footer-tratamentos">
       <header class="divide-10">
         <h5 class="info">Tratamentos</h5>
       </header>
       <nav class="small-12 left">
         <ul class="inline-list no-margin text-normal">
-          <?php
-            $defaults = array(
-              'theme_location'  => '',
-              'menu'            => 'Menu tratamentos',
-              'container'       => '',
-              'container_class' => '',
-              'container_id'    => '',
-              'menu_class'      => '',
-              'menu_id'         => '',
-              'echo'            => true,
-              'fallback_cb'     => 'main_menu',
-              'before'          => '',
-              'after'           => '',
-              'link_before'     => '',
-              'link_after'      => '',
-              'items_wrap'      => '%3$s',
-              'depth'           => 0,
-              'walker'          => '',
+          <?php 
+            $args = array(
+               'posts_per_page' => -1,
+               'orderby' => 'name',
+               'order' => 'ASC',
+               'post_status' => 'publish', 
             );
-            wp_nav_menu($defaults);
+            $posts = get_posts( $args );
+            foreach ($posts as $post): setup_postdata( $post );
+              global $post;
           ?>
+          <li><a href="<?php the_permalink(); ?>" title="<?php the_title(); ?>"><?php the_title(); ?></a></li>
+          <?php endforeach; ?>
         </ul>
       </nav>
     </div>
@@ -110,8 +102,8 @@
         <h5 class="info divide-10">Ligamos para você</h5>
         <p class="ghost no-margin lh-small text-normal">Deixe seu nome e telefone que ligamos para você!</p>
       </header>
-      <p class="left small-12 no-margin"><input type="text" name="nome" placeholder="Seu nome" required></p>
-      <p class="left small-12 no-margin"><input type="tel" name="telefone" placeholder="Seu telefone" required></p>
+      <p class="left small-12 no-margin"><input type="text" name="nome" placeholder="Seu nome" maxlength="250" required></p>
+      <p class="left small-12 no-margin"><input type="tel" name="telefone" class="phone" placeholder="Seu telefone" maxlength="250" required></p>
       <p class="left no-margin"><input type="submit" value="OK" class="right button info no-margin call-for-user"></p>
       <input type="hidden" name="page" value="<?php echo  is_home() ? 'Home' : wp_title(''); ?>">
     </form>
@@ -153,6 +145,10 @@ return t;
 <script type="text/javascript" src="https://apis.google.com/js/plusone.js"></script>
 <?php endif; ?>
 
-<?php wp_footer(); ?>
+<?php
+  global $plandd_option;
+  echo $plandd_option['opt-textarea-ga'];
+  wp_footer();
+?>
 </body>
 </html>
